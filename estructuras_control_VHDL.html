@@ -1,0 +1,620 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Estructuras de control de flujo o de desición en VHDL &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'estructuras_control_VHDL';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Circuitos lógicos aritméticos" href="circuitos_aritmeticos.html" />
+    <link rel="prev" title="Compuertas Lógicas en VHDL" href="compuertas_VHDL.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_UPIIH.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_UPIIH.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Material didáctico de circuitos lógicos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_VHDL.html">Formas de especificar el comportamiento de un circuito lógico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compuertas_VHDL.html">Compuertas Lógicas en VHDL</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estructuras de control de flujo o de desición en VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/estructuras_control_VHDL.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Estructuras de control de flujo o de desición en VHDL</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-if-then-else-en-vhdl">Estructura IF/THEN/ELSE en VHDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-elsif">Estructura ELSIF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-case">Estructura Case</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-control-de-flujo-o-de-desicion-en-vhdl">
+<h1>Estructuras de control de flujo o de desición en VHDL<a class="headerlink" href="#estructuras-de-control-de-flujo-o-de-desicion-en-vhdl" title="Permalink to this heading">#</a></h1>
+<p>En esta parte del curso, se exponen métodos básicos para la toma de desiciones «lógicas» para describir arquitecturas de sistemas digitales en VHDL. Es importante mencionar que cuando se usan estructuras de control de desición en VHDL, el orden en el cual se hacen las preguntas para esa toma de desiciones es importante. Para resumir este concepto, en los términos de VHDL, las sentencias de control que se escriben se denominan concurrentes.</p>
+<section id="estructura-if-then-else-en-vhdl">
+<h2>Estructura IF/THEN/ELSE en VHDL<a class="headerlink" href="#estructura-if-then-else-en-vhdl" title="Permalink to this heading">#</a></h2>
+<p>Las tablas de verdad permiten enumerar todas las combinaciones posibles de las variables independientes o entradas a un circuito lógico, sin embargo existen casos en los que se necesitan  mejores formas de maneja variables  numériaos.En los casos en los que se manejan intervalos o rangos posibles para alguna variable, por ejemplo, para un sistema que monitorea la temperatura de un proceso, para encender un ventilador cuando la temperatura sea mayor a algun vaor de referencia.</p>
+<ul class="simple">
+<li><p>Si la temperatra es de 1 grado Celsius el ventilador estará apagado.</p></li>
+<li><p>Si la temperatra es de 2 grados Celsius el ventilador estará apagado.i* Si la temperatra es de 5 grados Celsius el ventilador estará apagado</p></li>
+<li><p>…</p></li>
+<li><p>Si la temperatura es de 70 grados Celsius el ventilador estará apagado.</p></li>
+<li><p>Si la temperatura es 71 grados el ventilador se enciende.</p></li>
+<li><p>Si la temperatura es 72 grados el ventilador se enciende.</p></li>
+</ul>
+<p>Esta forma de representar el criterio para realcionar los posibles valores de la entrada; la temperatura en grados Celsius, con la salida; el encendido del ventilador de la tabla de verdad para describir la decisión de mantener apagado el ventilador o encenderlo.</p>
+<p>En VHDL un aspecto muy importante es la declaración correcta del tipo específico de las entradas. Por ejemplo, si una variable cualquiera es declarada como <code class="docutils literal notranslate"><span class="pre">INTEGER</span></code>, el compilador lo tratará como a un número. Si además se especifica un rango para ese número del 0 al 15, el compilador lo asumirá con una longitud de 4 bits. Es posible notar entonces que la especificación del Rango del número no especifica el número de índice en un vector de bits, sino que limita el rango de posibles valores que puede adquirir dicho entero.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------</span>
+<span class="c1">--Estructura IF en VHDL</span>
+<span class="c1">-------------------------------</span>
+<span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">IEEE.std_logic_1164.</span><span class="k">all</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Librería para variables lógicas estandard</span>
+
+<span class="k">entity</span><span class="w"> </span><span class="nc">prueba</span><span class="w"> </span><span class="k">is</span>
+<span class="w">   </span><span class="k">port</span><span class="p">(</span>
+<span class="w">   </span><span class="n">valor_digital</span><span class="w"> </span><span class="o">:</span><span class="k">in</span><span class="w"> </span><span class="kt">integer</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="c1">-- Entrada de 4 bits</span>
+<span class="w">   </span><span class="n">salida</span><span class="w"> </span><span class="o">:</span><span class="k">out</span><span class="w"> </span><span class="kt">bit</span><span class="w"> </span><span class="c1">-- Salida simple</span>
+<span class="w">   </span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">prueba</span><span class="p">;</span>
+
+<span class="k">architecture</span><span class="w"> </span><span class="nc">desicion</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">prueba</span><span class="w"> </span><span class="k">is</span>
+
+<span class="k">begin</span><span class="w"> </span>
+
+<span class="k">Process</span><span class="w"> </span><span class="p">(</span><span class="n">valor_digital</span><span class="p">)</span>
+<span class="w">  </span><span class="k">begin</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">valor_digital</span><span class="o">&gt;</span><span class="mi">6</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">       </span><span class="n">salida</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="n">salida</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">    </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">Process</span><span class="p">;</span>
+
+<span class="k">end</span><span class="w"> </span><span class="nc">desicion</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>Uno de los aspectos que causan más confusión acerca del lenguaje VHDL es entender el significado y contexto de la estructura denominada  <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>. Es importante recordar que VHDL es un lenguaje que se usa para describir el comportamiento de un circuito lógico, concebido para ser aplicado o evaluedo en una computadora, para realizar simulaciones o síntesis en un dispositivo logico programable.
+La estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>  en VHDL es un conjunto de líneas de código que tiene las características propias de un programa convencional, con la diferencia sencial de que cuyo propósito es describir eventos que suceden de manera secuancial en un circuito digital. Es muy importante entender cómo las acciones descritas en una estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> realmente ocurren en el circuito, una estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> no está constantemente activa describiendo lo que está sucediendo todo el tiempo, en cambio, una estuctura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> es un segmento de código que describe como reacciona un circuito a un cambio en al menos una de sus entradas. Estas entradas que invocan los cambios descritos <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> se identifican en una especificación que se denomina lista de sensibilidad, como se muestra abajo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Process</span> <span class="p">(</span><span class="n">valor_digital</span><span class="p">)</span>
+  <span class="n">begin</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">valor_digital</span><span class="o">&gt;</span><span class="mi">6</span><span class="p">)</span> <span class="n">then</span>
+       <span class="n">salida</span><span class="o">&lt;=</span><span class="s1">&#39;1&#39;</span><span class="p">;</span>
+    <span class="k">else</span>
+      <span class="n">salida</span><span class="o">&lt;=</span><span class="s1">&#39;0&#39;</span><span class="p">;</span>
+    <span class="n">end</span> <span class="k">if</span><span class="p">;</span>
+<span class="n">end</span> <span class="n">Process</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Esta lista de sensibilidad sigue a la palabra clave <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> y está contenida entre paréntesis. La interpretación de las declaraciones dentro de la estructura  <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> (que resultan en cambios dentro del circuito) es secuencial, no concurrente. En otras palabras, el orden de las declaraciones tiene un efecto sobre el comportamiento del circuito resultante. Las variables se declaran y modifican dentro de la estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>, su valor se actualiza inmediatamente. Cuando un <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> es activado por un cambio en su lista de sensibilidad y la lógica dentro del <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> conduce a una asignación de un nuevo valor a una variable, el efecto es inmediato. Por lo tanto, estas variables se actualizan en el orden de las declaraciones dentro de la estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>. Por otro lado, las <code class="docutils literal notranslate"><span class="pre">SEÑALES</span></code> que se alteran dentro de un <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> son manejadas al final del proceso (<span id="id1">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>).</p>
+</section>
+<section id="estructura-elsif">
+<h2>Estructura ELSIF<a class="headerlink" href="#estructura-elsif" title="Permalink to this heading">#</a></h2>
+<p>Es común que se presente la situación en la que se debe elegir entre varias acciones a realizar cuando se está resolviendo un programa. Se ha mencionado que la estructura de control de flujo <strong>IF</strong> elige si se realiza un conjunto de insrucciones con base en una condición de control. Por su parte, la estructura <strong>IF/ELSE</strong> selecciona una de dos acciones posibles, tambén considerando un criterio establecido en una condición de control. En VHDL existe la estructura <strong>ELSIF</strong>, la cual es resultado de la combinación de las estructuras <strong>IF</strong> y <strong>ELSE</strong>. Esta estructura en particular elige entre varios resultados podibles. En la <a class="reference internal" href="#flujo-elsif"><span class="std std-numref">Figura 9</span></a> se presenta de forma gráfica el flujo de programa cuando se incluye la estructura <strong>ELSIF</strong>. En el diagrama de flujo se observa que se evalua cada una de las condiciones establecidas en el enunciado <strong>ELSIF</strong>, se realiza una acción o conjunto de instrucciones si la condicion es verdadera (<strong>V</strong>) y una acción o conjunto de instrucciones diferente si es falso <strong>F</strong>. Además, cada una de las acciones está asociada con una condición y no es posible seleccionar mas de una acción por el direccionamiento al bloque marcado con la etiqueta «final». Dado que las condiciones utilizadas para decidir la acción apropiada pueden ser cualquier expresión que se evalúe como verdadera o falsa, es posible utilizar los operadores de desigualdad para elegir una acción basada en un rango de valores.</p>
+<figure class="align-default" id="flujo-elsif">
+<a class="reference internal image-reference" href="_images/flujo1.png"><img alt="_images/flujo1.png" src="_images/flujo1.png" style="height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Figura 9 </span><span class="caption-text">Diagrama de flujo de la estructura de control ELSIF.</span><a class="headerlink" href="#flujo-elsif" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+<p>Un ejemplo cásico de aplicación es un convertidor analógico digital de 4 bits que se utiliza para el monitoreo de la presión en un tanque de un compresor de aire. En dicha aplicación se requiere encender una alarma visual para cada una de las posibles situaciónes en las que se encuentre la presión en el contenedor. Una posible asiganción del rango para el cual se enciende cada una de las alarmas visuales se muestra en la siguiente tabla:</p>
+<table class="table table-left" id="tablapresion">
+<caption><span class="caption-number">Tabla 6 </span><span class="caption-text">Tabla de rangos para alarmas visuales</span><a class="headerlink" href="#tablapresion" title="Enlace permanente a esta tabla">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Valor digital</p></th>
+<th class="head"><p>Clasificación</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0000-1001\)</span></p></td>
+<td><p>Baja presión</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1010-1011\)</span></p></td>
+<td><p>Presión adecuada</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(1100-1111\)</span></p></td>
+<td><p>Alta presión</p></td>
+</tr>
+</tbody>
+</table>
+<p>El siguiente código en VHDL describe el circuito lógico capaz de realizar esta acción.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-------------------------------------------------------------</span>
+<span class="c1">-- Estructura ELSIF en VHDL aplicada al monitoreo de presión</span>
+<span class="c1">-------------------------------------------------------------</span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">monitor_presion</span><span class="w"> </span><span class="k">is</span>
+<span class="w"> </span><span class="k">PORT</span><span class="w"> </span><span class="p">(</span><span class="n">dato_digital</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="kt">INTEGER</span><span class="w"> </span><span class="k">RANGE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
+<span class="w">       </span><span class="n">baja_presion</span><span class="p">,</span><span class="w"> </span><span class="n">presion_adecuada</span><span class="p">,</span><span class="w"> </span><span class="n">alta_presion</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="kt">BIT</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">monitor_presion</span><span class="p">;</span>
+
+<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">monitor_presion</span><span class="w"> </span><span class="k">is</span>
+<span class="k">SIGNAL</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">BIT_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="k">DOWNTO</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span><span class="w"> </span>
+<span class="w">    </span><span class="k">Process</span><span class="w"> </span><span class="p">(</span><span class="n">dato_digital</span><span class="p">)</span>
+<span class="w">      </span><span class="k">begin</span>
+<span class="w">         </span><span class="k">if</span><span class="p">(</span><span class="n">dato_digital</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">           </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="s">&quot;100&quot;</span><span class="p">;</span>
+<span class="w">         </span><span class="k">elsif</span><span class="p">(</span><span class="n">dato_digital</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">9</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">dato_digital</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">11</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>
+<span class="w">           </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="s">&quot;010&quot;</span><span class="p">;</span>
+<span class="w">         </span><span class="k">else</span><span class="w"> </span>
+<span class="w">           </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="s">&quot;001&quot;</span><span class="p">;</span>
+<span class="w">       </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">Process</span><span class="p">;</span>
+
+<span class="n">baja_presion</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">estado</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">presion_adecuada</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">alta_presion</span><span class="w">     </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">estado</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="k">end</span><span class="w"> </span><span class="nc">arq</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>La salida en vivado de la simulación del código anterior se muestra en la figura de abajo:</p>
+<figure class="align-default" id="sim-presion">
+<a class="reference internal image-reference" href="_images/sim_presion.png"><img alt="_images/sim_presion.png" src="_images/sim_presion.png" style="height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Figura 10 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-presion" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="estructura-case">
+<h2>Estructura Case<a class="headerlink" href="#estructura-case" title="Permalink to this heading">#</a></h2>
+<p>Una estructura de control muy importante es aquella que se utiliza para elegir acciones basadas en condiciones determinadas muy específicas es común que a esta estructura en particular se le denomine usando la palabra reservada <strong>CASE</strong>. En VHDL, la estructura <strong>CASE</strong> considera un valor específico de una expresión u objeto y luego evalua una lista de posibles valores o casos para la expresión u objeto de interés. Esta estructura hace alusión a la revisión de una contraseña, dado que realizará una instrucción solamente cuando el dato que se compara es exactamente el solicitado en vez de un rango de valores como en el caso de la estructura <strong>IF</strong> o <strong>IF/ELSIF</strong>. Por ejemplo, para describir el funcionamiento de una máquina selectora de monedas, realizada por medio de lógica combinacional, se propone el siguiente código en VHDL.</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">----------------------------------------------------------------</span>
+<span class="c1">-- Estructura CASE en VHDL aplicada a la selección de monedas</span>
+<span class="c1">----------------------------------------------------------------</span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">monedas</span><span class="w"> </span><span class="k">is</span>
+<span class="w"> </span><span class="k">PORT</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">un_peso</span><span class="p">,</span><span class="w"> </span><span class="n">dos_pesos</span><span class="p">,</span><span class="w"> </span><span class="n">cinco_pesos</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="kt">BIT</span><span class="p">;</span>
+<span class="w">       </span><span class="n">centavos</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">OUT</span><span class="w"> </span><span class="kt">INTEGER</span><span class="w"> </span><span class="k">RANGE</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">monedas</span><span class="p">;</span>
+
+<span class="k">architecture</span><span class="w"> </span><span class="nc">detecta</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">monedas</span><span class="w"> </span><span class="k">is</span>
+<span class="k">SIGNAL</span><span class="w"> </span><span class="n">monedas</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">BIT_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="k">DOWNTO</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">begin</span><span class="w"> </span>
+<span class="w">    </span><span class="n">monedas</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">un_peso</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">dos_pesos</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">cinco_pesos</span><span class="p">);</span>
+<span class="w">    </span><span class="k">Process</span><span class="w"> </span><span class="p">(</span><span class="n">monedas</span><span class="p">)</span>
+<span class="w">      </span><span class="k">begin</span>
+<span class="w">       </span><span class="k">CASE</span><span class="w"> </span><span class="p">(</span><span class="n">monedas</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span>
+<span class="w">         </span><span class="k">When</span><span class="w"> </span><span class="s">&quot;001&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">centavos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">500</span><span class="p">;</span>
+<span class="w">         </span><span class="k">When</span><span class="w"> </span><span class="s">&quot;010&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">centavos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">200</span><span class="p">;</span>
+<span class="w">         </span><span class="k">When</span><span class="w"> </span><span class="s">&quot;100&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">centavos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">         </span><span class="k">When</span><span class="w"> </span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">centavos</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">       </span><span class="k">end</span><span class="w"> </span><span class="k">CASE</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">Process</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">detecta</span><span class="p">;</span><span class="w"> </span>
+</pre></div>
+</div>
+<p>La salida en vivado de la simulación del código anterior se muestra en la figura de abajo:</p>
+<figure class="align-default" id="sim-monedas">
+<a class="reference internal image-reference" href="_images/sim_monedas.png"><img alt="_images/sim_monedas.png" src="_images/sim_monedas.png" style="height: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Figura 11 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-monedas" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "Octave"
+        },
+        kernelOptions: {
+            name: "Octave",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'Octave'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="compuertas_VHDL.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Compuertas Lógicas en VHDL</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="circuitos_aritmeticos.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Circuitos lógicos aritméticos</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-if-then-else-en-vhdl">Estructura IF/THEN/ELSE en VHDL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-elsif">Estructura ELSIF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estructura-case">Estructura Case</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Luis Gerardo Trujillo Franco
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
