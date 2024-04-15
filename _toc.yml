@@ -1,0 +1,16 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: circuitos_logicos_VHDL.md
+- file: logicos_VHDL.md
+- file: compuertas_VHDL.md
+- file: estructuras_control_VHDL.md
+- file: circuitos_aritmeticos.md
+- file: simulaciones_testbench.md
+#- file: Practica3
+#- file: Practica4
+- file: Bibliografía
+
