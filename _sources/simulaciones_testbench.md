@@ -154,7 +154,13 @@ begin
 end arq_test;
 
 ```
+El video de abajo muestra el procedimiento completo para simular un sistema digital descrito en VHDL en vivado, usando los archivos de descripción de hardware y el testbench anteriores.
 
+<div align='center'>
+<video controls autoplay muted="true" loop="true" width="600">
+    <source src="./_static/videos/salida_comp_tb.mp4 " type="video/mp4">
+</video>
+</div>
 
 ## Simulacion de los circuitos aritméticos
 
