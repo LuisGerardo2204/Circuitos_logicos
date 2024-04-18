@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Estructuras de control de flujo o de desición en VHDL &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -333,10 +332,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estructuras-de-control-de-flujo-o-de-desicion-en-vhdl">
+  <div class="tex2jax_ignore mathjax_ignore section" id="estructuras-de-control-de-flujo-o-de-desicion-en-vhdl">
 <h1>Estructuras de control de flujo o de desición en VHDL<a class="headerlink" href="#estructuras-de-control-de-flujo-o-de-desicion-en-vhdl" title="Permalink to this heading">#</a></h1>
 <p>En esta parte del curso, se exponen métodos básicos para la toma de desiciones «lógicas» para describir arquitecturas de sistemas digitales en VHDL. Es importante mencionar que cuando se usan estructuras de control de desición en VHDL, el orden en el cual se hacen las preguntas para esa toma de desiciones es importante. Para resumir este concepto, en los términos de VHDL, las sentencias de control que se escriben se denominan concurrentes.</p>
-<section id="estructura-if-then-else-en-vhdl">
+<div class="section" id="estructura-if-then-else-en-vhdl">
 <h2>Estructura IF/THEN/ELSE en VHDL<a class="headerlink" href="#estructura-if-then-else-en-vhdl" title="Permalink to this heading">#</a></h2>
 <p>Las tablas de verdad permiten enumerar todas las combinaciones posibles de las variables independientes o entradas a un circuito lógico, sin embargo existen casos en los que se necesitan  mejores formas de maneja variables  numériaos.En los casos en los que se manejan intervalos o rangos posibles para alguna variable, por ejemplo, para un sistema que monitorea la temperatura de un proceso, para encender un ventilador cuando la temperatura sea mayor a algun vaor de referencia.</p>
 <ul class="simple">
@@ -391,19 +390,21 @@ La estructura <code class="docutils literal notranslate"><span class="pre">PROCE
 </pre></div>
 </div>
 <p>Esta lista de sensibilidad sigue a la palabra clave <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> y está contenida entre paréntesis. La interpretación de las declaraciones dentro de la estructura  <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> (que resultan en cambios dentro del circuito) es secuencial, no concurrente. En otras palabras, el orden de las declaraciones tiene un efecto sobre el comportamiento del circuito resultante. Las variables se declaran y modifican dentro de la estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>, su valor se actualiza inmediatamente. Cuando un <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> es activado por un cambio en su lista de sensibilidad y la lógica dentro del <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> conduce a una asignación de un nuevo valor a una variable, el efecto es inmediato. Por lo tanto, estas variables se actualizan en el orden de las declaraciones dentro de la estructura <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code>. Por otro lado, las <code class="docutils literal notranslate"><span class="pre">SEÑALES</span></code> que se alteran dentro de un <code class="docutils literal notranslate"><span class="pre">PROCESS</span></code> son manejadas al final del proceso (<span id="id1">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>).</p>
-</section>
-<section id="estructura-elsif">
+</div>
+<div class="section" id="estructura-elsif">
 <h2>Estructura ELSIF<a class="headerlink" href="#estructura-elsif" title="Permalink to this heading">#</a></h2>
 <p>Es común que se presente la situación en la que se debe elegir entre varias acciones a realizar cuando se está resolviendo un programa. Se ha mencionado que la estructura de control de flujo <strong>IF</strong> elige si se realiza un conjunto de insrucciones con base en una condición de control. Por su parte, la estructura <strong>IF/ELSE</strong> selecciona una de dos acciones posibles, tambén considerando un criterio establecido en una condición de control. En VHDL existe la estructura <strong>ELSIF</strong>, la cual es resultado de la combinación de las estructuras <strong>IF</strong> y <strong>ELSE</strong>. Esta estructura en particular elige entre varios resultados podibles. En la <a class="reference internal" href="#flujo-elsif"><span class="std std-numref">Figura 9</span></a> se presenta de forma gráfica el flujo de programa cuando se incluye la estructura <strong>ELSIF</strong>. En el diagrama de flujo se observa que se evalua cada una de las condiciones establecidas en el enunciado <strong>ELSIF</strong>, se realiza una acción o conjunto de instrucciones si la condicion es verdadera (<strong>V</strong>) y una acción o conjunto de instrucciones diferente si es falso <strong>F</strong>. Además, cada una de las acciones está asociada con una condición y no es posible seleccionar mas de una acción por el direccionamiento al bloque marcado con la etiqueta «final». Dado que las condiciones utilizadas para decidir la acción apropiada pueden ser cualquier expresión que se evalúe como verdadera o falsa, es posible utilizar los operadores de desigualdad para elegir una acción basada en un rango de valores.</p>
-<figure class="align-default" id="flujo-elsif">
+<div class="figure align-default" id="flujo-elsif">
 <a class="reference internal image-reference" href="_images/flujo1.png"><img alt="_images/flujo1.png" src="_images/flujo1.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 9 </span><span class="caption-text">Diagrama de flujo de la estructura de control ELSIF.</span><a class="headerlink" href="#flujo-elsif" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 9 </span><span class="caption-text">Diagrama de flujo de la estructura de control ELSIF.</span><a class="headerlink" href="#flujo-elsif" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>Un ejemplo cásico de aplicación es un convertidor analógico digital de 4 bits que se utiliza para el monitoreo de la presión en un tanque de un compresor de aire. En dicha aplicación se requiere encender una alarma visual para cada una de las posibles situaciónes en las que se encuentre la presión en el contenedor. Una posible asiganción del rango para el cual se enciende cada una de las alarmas visuales se muestra en la siguiente tabla:</p>
 <table class="table table-left" id="tablapresion">
 <caption><span class="caption-number">Tabla 6 </span><span class="caption-text">Tabla de rangos para alarmas visuales</span><a class="headerlink" href="#tablapresion" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Valor digital</p></th>
 <th class="head"><p>Clasificación</p></th>
@@ -452,14 +453,12 @@ La estructura <code class="docutils literal notranslate"><span class="pre">PROCE
 </pre></div>
 </div>
 <p>La salida en vivado de la simulación del código anterior se muestra en la figura de abajo:</p>
-<figure class="align-default" id="sim-presion">
+<div class="figure align-default" id="sim-presion">
 <a class="reference internal image-reference" href="_images/sim_presion.png"><img alt="_images/sim_presion.png" src="_images/sim_presion.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 10 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-presion" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="estructura-case">
+<p class="caption"><span class="caption-number">Figura 10 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-presion" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+<div class="section" id="estructura-case">
 <h2>Estructura Case<a class="headerlink" href="#estructura-case" title="Permalink to this heading">#</a></h2>
 <p>Una estructura de control muy importante es aquella que se utiliza para elegir acciones basadas en condiciones determinadas muy específicas es común que a esta estructura en particular se le denomine usando la palabra reservada <strong>CASE</strong>. En VHDL, la estructura <strong>CASE</strong> considera un valor específico de una expresión u objeto y luego evalua una lista de posibles valores o casos para la expresión u objeto de interés. Esta estructura hace alusión a la revisión de una contraseña, dado que realizará una instrucción solamente cuando el dato que se compara es exactamente el solicitado en vez de un rango de valores como en el caso de la estructura <strong>IF</strong> o <strong>IF/ELSIF</strong>. Por ejemplo, para describir el funcionamiento de una máquina selectora de monedas, realizada por medio de lógica combinacional, se propone el siguiente código en VHDL.</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">----------------------------------------------------------------</span>
@@ -487,14 +486,12 @@ La estructura <code class="docutils literal notranslate"><span class="pre">PROCE
 </pre></div>
 </div>
 <p>La salida en vivado de la simulación del código anterior se muestra en la figura de abajo:</p>
-<figure class="align-default" id="sim-monedas">
+<div class="figure align-default" id="sim-monedas">
 <a class="reference internal image-reference" href="_images/sim_monedas.png"><img alt="_images/sim_monedas.png" src="_images/sim_monedas.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 11 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-monedas" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
+<p class="caption"><span class="caption-number">Figura 11 </span><span class="caption-text">Salida de la simulación en vivado.</span><a class="headerlink" href="#sim-monedas" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

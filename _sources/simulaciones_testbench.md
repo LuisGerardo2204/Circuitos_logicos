@@ -386,9 +386,7 @@ Un sumador binario paralelo es un circuito digital que realiza la suma aritméti
 binarios empleando sólo lógica combinacional({cite:t}`Mano2005`). El sumador paralelo es un conjunto de $n$ sumadores completos posicionados en paralelo, de manera tal que todos los bits de ambos sumandos se presentan simultáneamente en paralelo en las entradas para calcular la suma. Los $n$ sumadores completos
 se conectan uno detrás del otro (en cascada), con la salida del acarreo de un sumador completo conectada a la entrada de acarreo del siguiente sumador completo. Es posible que aparezca un acarreo  con valor "1"
 cerca del bit menos significativo del sumador tal que se propaga a través del resto de los sumadores completos hacia el bit más significativo. Un circuito lógico combinacional como este se denomina sumador
-con acarreo serie (en inglés se denomina ripple carry adder). La figura figura {numref}`sumador_bloques` muestra la interconexión típica, en forma de diagrama de bloques, para construir un sumador de 4 bits con acarreo serie. Los bits del primer sumando **$X$** y los del segundo sumando **$Y$** son designados mediante subíndices en orden creciente de derecha a izquierda, de modo que el subíndice 0 denota el bit menos significativo o con menor ponderación. Los acarreos se conectan en serie a través de los sumadores completos. El acarreo de entrada del sumador pararelo es **$C_0$**, y el acarreo de salida es **$C_4$**. Un sumador de $n$ bits con acarreo serie requiere $n$ sumadores completos, con cada salida de acarreo conectada a la entrada de acarreo el siguiente sumador completo de orden inmediato superior. Por ejemplo, considere los dos números binarios $X=1001$ y $Y=0010$. Su suma, $S=1100$, se forma con un sumador completo de 4 bits con acarreo serie como sigue:
-
-
+con acarreo serie (en inglés se denomina ripple carry adder). La {numref}`sumador_bloques` muestra la interconexión típica, en forma de diagrama de bloques, para construir un sumador de 4 bits con acarreo serie. Los bits del primer sumando **$X$** y los del segundo sumando **$Y$** son designados mediante subíndices en orden creciente de derecha a izquierda, de modo que el subíndice 0 denota el bit menos significativo o con menor ponderación. Los acarreos se conectan en serie a través de los sumadores completos. El acarreo de entrada del sumador pararelo es **$C_0$**, y el acarreo de salida es **$C_4$**. Un sumador de $n$ bits con acarreo serie requiere $n$ sumadores completos, con cada salida de acarreo conectada a la entrada de acarreo el siguiente sumador completo de orden inmediato superior. Por ejemplo, considere los dos números binarios $X=1011$ y $Y=0011$. Su suma, $S=1110$, se puede realizar utilizando un sumador completo de completo bits con acarreo serie como se muestra en la {numref}`suma_binaria`.
 
 ```{figure} /images/sumador_bloques.png
 :height: 200px
@@ -397,10 +395,28 @@ con acarreo serie (en inglés se denomina ripple carry adder). La figura figura 
 Diagrama de un sumador con acarreo serie.
 ```
 
+```{figure} /images/suma_binaria.png
+:height: 250px
+:name: suma_binaria
+Suma de dos números de cuatro bits.
+```
+
+### Simulación del sumador con acarreo serie
+
+La descripción en VHDL del sumador en serie incluye a la drscripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador serie se muestra abajo:
+
 ```VHDL
+--------------------------------------------------
+-- Código VHDL para la descripción de 
+--    un sumador con acarreo 
+-- serie de dos números de 4 bits
+--------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
- 
+------------------------------------------------  
+-- Se usa la descripción de un bloque 
+--   básico el cual es un sumador completo
+--------------------------------------------------
 entity sumador_completo is
  Port (  X : in STD_LOGIC;
          Y : in STD_LOGIC;
@@ -408,7 +424,7 @@ entity sumador_completo is
          S : out STD_LOGIC;
          Cout : out STD_LOGIC);
 end sumador_completo;
- 
+-- Se describe la arquitectura a nivel compuerta 
 architecture nivel_compuerta of sumador_completo is
  
 begin
@@ -417,7 +433,11 @@ begin
  Cout <= (X AND Y) OR (Z AND X) OR (Z AND Y) ;
  
 end nivel_compuerta; 
- 
+----------------------------------------------------
+-- Se describe la entidad sumador serie que 
+-- contiene al sumador completo como bloque 
+-- fundamental
+-------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
  
@@ -431,7 +451,8 @@ end sumador_serie;
  
 architecture arq of sumador_serie is
  
--- Declaración del sumador completo
+-- Declaración del uso del sumador completo
+-- como bloque básico
 component sumador_completo
  Port (  X : in STD_LOGIC;
          Y : in STD_LOGIC;
@@ -445,7 +466,8 @@ signal c1,c2,c3: STD_LOGIC;
  
 begin
  
--- Mapeo del sumador completo 4 veces
+-- Mapeo del sumador completo 4 veces, usado etiquetas 
+-- Sc para interconectar los bloques
 Sc1: sumador_completo port map( X(0), Y(0), C0, S(0), c1);
 Sc2: sumador_completo port map( X(1), Y(1), c1, S(1), c2);
 Sc3: sumador_completo port map( X(2), Y(2), c2, S(2), c3);
@@ -453,28 +475,33 @@ Sc4: sumador_completo port map( X(3), Y(3), c3, S(3), C4);
  
 end arq;
 ```
-Mientras que el contenido del archivo test bench es el siguiente:
+El contenido del archivo test bench incluye al sumador serie como un componente, el cual se utiliza para declarar al diseño bajo prueba (DUT), el código VHDL del test bench es el siguiente:
 
 ```VHDL
 library IEEE;
 USE ieee.std_logic_1164.ALL;
  
-ENTITY tb_sumador_serie IS
-END tb_sumador_serie;
+entity tb_sumador_serie is
+end tb_sumador_serie;
  
-ARCHITECTURE arq OF tb_sumador_serie IS 
+architecture arq of tb_sumador_serie is
  
 -- Declaración del diseño bajo prueba DUT
  
-COMPONENT sumador_serie
+component sumador_serie
 Port ( X : in STD_LOGIC_VECTOR (3 downto 0);
        Y : in STD_LOGIC_VECTOR (3 downto 0);
        C0 : in STD_LOGIC;
        S : out STD_LOGIC_VECTOR (3 downto 0);
        C4 : out STD_LOGIC);
-END COMPONENT;
- 
---Entradas
+end component;
+------------------------------------------------
+--   Entradas
+--  en este caso es importante usar valores por defecto
+--- para iniciar la simulación, usanod la asignación
+--- especial := (others => '0') para vectores de bits
+---- y := '0' para bits.
+-------------------------------------------------
 signal test_X : std_logic_vector(3 downto 0):= (others => '0');
 signal test_Y : std_logic_vector(3 downto 0):= (others => '0');
 signal test_C0 : std_logic:= '0';
@@ -483,7 +510,7 @@ signal test_C0 : std_logic:= '0';
 signal test_S : std_logic_vector(3 downto 0);
 signal test_Cout : std_logic;
  
-BEGIN
+begin
  
 -- Inicializaciond del DUT
 DUT: sumador_serie 
@@ -500,9 +527,11 @@ process
 begin
 -- Mantener reset inical por 100ns
 wait for 100 ns;
+-- Se prueban varias combinaciones de 
+-- sumandos
 test_X <= "0110";
 test_Y <= "1100";
- 
+--- 
 wait for 100 ns;
 test_X <= "1111";
 test_Y <= "1100";
@@ -518,11 +547,18 @@ test_Y <= "1110";
 wait for 100 ns;
 test_X <= "1111";
 test_Y <= "1111";
- 
+
 wait;
 
- 
 end process;
- 
-END;
+
+end;
+```
+
+La salida en Vivado de la simulación se muestra en la figura {numref}`salida_suma_serie_sim`.
+
+```{figure} /images/suma_serie_sim.png
+:height: 350px
+:name: salida_suma_serie_sim
+Simulación del sumador con acarreo serie.
 ```
