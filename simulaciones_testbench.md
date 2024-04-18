@@ -431,7 +431,7 @@ end sumador_serie;
  
 architecture arq of sumador_serie is
  
--- Full Adder VHDL Code Component Decalaration
+-- Declaración del sumador completo
 component sumador_completo
  Port (  X : in STD_LOGIC;
          Y : in STD_LOGIC;
