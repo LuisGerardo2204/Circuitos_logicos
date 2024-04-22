@@ -69,29 +69,11 @@ $$
 
 ## Sumador-restador binario
 
-Usando el complemento a 1 y el complemento a 2 hemos suprimido la operación de la resta y
-solamente necesitamos un complementador apropiado y un sumador. Cuando realizamos una
-resta complementamos el substraendo N, mientras que para sumar no es necesario. Estas operaciones
-se pueden lograr usando un complementador selectivo y un sumador interconectados
-para formar un sumador-restador. Empleamos el complemento a 2 por ser el más habitual en los
-sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole
-1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos
-inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del
-sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
-del sumador, se obtiene muy económicamente el complemento a 2. En la resta en complemento
-a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado
-y añadirle un signo menos si se produce acarreo final. La operación de corrección se realiza
-empleando cualquier sumador-restador una segunda vez con M%0 o un complementador selectivo
-como el de la Figura 5-7.
+Usando el complemento a 2 se suprime la operación de la resta y solamente se hace necesario un complementador apropiado y un sumador completo como el que se desarrolló en las secciones anteriores. Cuando realizamos una resta complementamos a dos el substraendo, mientras que para sumar no es necesario. Estas operaciones se pueden lograr usando un complementador selectivo y un sumadorcompleto conectados para formar un sumador-restador.El complemento a 2 se aplica por ser el más habitual en los
+sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole 1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
+del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la resta en complemento a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado y añadirle un signo menos si se produce acarreo final. 
 
-En la {numref}`sumador_restador` se muestra un circuito sumador-restador de 4 bits. La entrada S controla el funcionamiento. Cuando
-S%0 el circuito funciona como un sumador, y cuando S%1 el circuito se convierte en un
-restador. Cada puerta OR exclusiva recibe la entrada S y una de las entradas de B, Bi. Cuando
-S%0, tenemos Bi0. Si los sumadores completos reciben el valor de B, y la entrada de acarreo
-es 0, el circuito realiza A!B. Cuando S%1, tenemos Bi1%Bi y C0%1. En este caso,
-el circuito realiza la operación A!el complemento a 2 de B.
-
-
+En la {numref}`sumador_restador` se muestra un circuito sumador-restador de 4 bits. La entrada $R$ controla el funcionamiento. Cuando $R=0$ el circuito funciona como un sumador, y cuando $R=1$ el circuito se convierte en un restador. Cada puerta OR exclusiva recibe la entrada $R$ y una de las entradas de $Y$, $Y_i$. Cuando $R=0$, tenemos $Y_i \oplus 0$. Si los sumadores completos reciben el valor de $Y$, y la entrada de acarreo es 0, el circuito realiza $A+B$. Cuando $R=1$, tenemos $Y_i \oplus 1=\overline{Y}_i$ y $C_0=1$. En este caso, el circuito realiza la operación $A+comp_2(B)$.
 
 ```{figure} /images/sumador_restador.png
 :height: 250px
