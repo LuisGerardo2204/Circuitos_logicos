@@ -7,7 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Formas de especificar el comportamiento de un circuito lógico &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -171,6 +172,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="estructuras_control_VHDL.html">Estructuras de control de flujo o de desición en VHDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resta_binaria.html">Resta binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -331,7 +333,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="formas-de-especificar-el-comportamiento-de-un-circuito-logico">
+  <section class="tex2jax_ignore mathjax_ignore" id="formas-de-especificar-el-comportamiento-de-un-circuito-logico">
 <h1>Formas de especificar el comportamiento de un circuito lógico<a class="headerlink" href="#formas-de-especificar-el-comportamiento-de-un-circuito-logico" title="Permalink to this heading">#</a></h1>
 <p>La función de un circuito lógico es el proporcionar una o varias salidas en función de una varias entradas, con dos posibles estados uno «1» y cero «0» lógicos. Las maneras de representar la interacción de las entradas para producir la o las salidas deseadas se establecen por medio de ecuaciones booleanas o tablas de verdad. A partir de las expresiones booleanas o las tablas de verdad, se aplican métodos de optimización o simplificación de funciones para obeter las salidas o comportamientos deseados con base en expresiones con el menor número de operaciones y variables involucradas.</p>
 <ul class="simple">
@@ -339,13 +341,6 @@ document.write(`
 </ul>
 <table class="table table-left" id="tabla1">
 <caption><span class="caption-number">Tabla 1 </span><span class="caption-text">Tabla de verdad</span><a class="headerlink" href="#tabla1" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>X</p></th>
 <th class="head"><p>Y</p></th>
@@ -422,10 +417,12 @@ F=\overline{X}Y\overline{Z}+X\overline{Y}~\overline{Z}+X\overline{Y}Z+XY\overlin
 <ul class="simple">
 <li><p><strong>Diagrama esquemático:</strong> Otra forma de especificar un circuito lógico es por medio de un diagrama esquemático, es decir, por medio del diagrama de conexiones de las compuertas lógicas que lo conforman. Por ejemplo, para la función definida por la tabla de verdad <a class="reference internal" href="#tabla1"><span class="std std-numref">Tabla 1</span></a>:</p></li>
 </ul>
-<div class="figure align-default" id="cl1">
+<figure class="align-default" id="cl1">
 <a class="reference internal image-reference" href="_images/diagrama1.png"><img alt="_images/diagrama1.png" src="_images/diagrama1.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 1 </span><span class="caption-text">Circuito lógico de la función F.</span><a class="headerlink" href="#cl1" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 1 </span><span class="caption-text">Circuito lógico de la función F.</span><a class="headerlink" href="#cl1" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>La simplificación de la función permite realizar un circuito más sencillo. Utilizando manipulación algebraica se obtiene:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -439,12 +436,14 @@ F=((\overline{X}+X)Y)\overline{Z}+X\overline{Y}
 \[
 F=Y\overline{Z}+X\overline{Y}
 \]</div>
-<div class="figure align-default" id="cl2">
+<figure class="align-default" id="cl2">
 <a class="reference internal image-reference" href="_images/diagrama2.png"><img alt="_images/diagrama2.png" src="_images/diagrama2.png" style="height: 150px;" /></a>
-<p class="caption"><span class="caption-number">Figura 2 </span><span class="caption-text">Circuito lógico simplificado de la función F.</span><a class="headerlink" href="#cl2" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 2 </span><span class="caption-text">Circuito lógico simplificado de la función F.</span><a class="headerlink" href="#cl2" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Una tercer forma de especificar o describir un circuito lógico es utilizando un lenguaje especial y estandarizado. Un lenguaje de descripción muy utilizado es VHDL, cuyas siglas provienen de (Very High Speed Integrated Circuits) Hardware Description Language, por abreviación se utilizan las siglas VHDL.</p>
-<div class="section" id="breve-introduccion-a-vhdl">
+<section id="breve-introduccion-a-vhdl">
 <h2>Breve introducción a VHDL<a class="headerlink" href="#breve-introduccion-a-vhdl" title="Permalink to this heading">#</a></h2>
 <p>VHDL es un lenguaje de descripción de circuitos electrónicos digitales que utiliza distintos niveles de abstracción. El lenguaje VHDL utiliza una sintaxis poco usual para describir los circuitos lógicos <span id="id1">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>. La razón principal de ello es que VHDL se pensó originalmente como un lenguaje para la documentación y simulación de circuitos, no para describir los circuitos para la síntesis.</p>
 <p>Es muy útil tener en consideración, como punto de partida, que un circuito o subcircuito descrito mediante VHDL se denomina diseño de entidad (design entity). Una entidad o circuito descrito está compuesto por dos partes principales:</p>
@@ -461,20 +460,14 @@ fundamentalmente de los lenguajes de programación en que describen operaciones 
 mientras que la mayoría de los lenguajes de programación describen operaciones secuenciales.
 Una aplicación obvia para los lenguajes de descripción hardware es proporcionar una alternativa
 a los esquemáticos <span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>. Cuando el lenguaje se emplea de esta manera para describir una interconexiónde componentes, se denomina descripción estructural. La descripción estructural se emplea como entrada en la simulación lógica tal y como se haría con un diagrama esquemático. Para poder llevar a cabo esto, es necesario disponer de modelos para cada primitiva. Si se emplea un HDL, entonces estos modelos pueden también escribirse en dicho HDL, con lo que se logra una representación más uniforme y portable para la simulación.</p>
-</div>
-<div class="section" id="representacion-de-datos-en-vhdl">
+</section>
+<section id="representacion-de-datos-en-vhdl">
 <h2>Representación de datos en VHDL<a class="headerlink" href="#representacion-de-datos-en-vhdl" title="Permalink to this heading">#</a></h2>
 <p>Como hemos estudiado al principio del curso, los datos numéricos se pueden representar de varias maneras, por ejemplo, el uso del sistema numérico hexadecimal como una manera conveniente de comunicar conjuntos de bits que se traducen en patrones, caracteres o palabras. Las computadoras y los sistemas digitales sólo pueden operar con información binaria (unos y ceros lógicos). Cuando se escribe en HDL, a menudo
 necesita utilizar estos distintos formatos de números y la computadora debe poder para entender qué sistema numérico estamos usando. Por ejemplo, <span class="math notranslate nohighlight">\(101101_2\)</span> representa binario, <span class="math notranslate nohighlight">\(101101_{16}\)</span> representa hexadecimal y <span class="math notranslate nohighlight">\(101101\)</span> significa que está expresado en decimal. Cada lenguaje de programación y HDL tiene su propia forma única de identificar los distintos números sistemas, generalmente hecho con un prefijo para indicar el sistema numérico. En la mayoría de los idiomas, se supone que un número sin prefijo es decimal. Cuando Si leemos una de estas designaciones numéricas, debemos pensar en ella como un símbolo.
 que representa un patrón de bits binarios. Estos valores numéricos se denominan como escalares o literales. La <a class="reference internal" href="#tabla2"><span class="std std-numref">Tabla 2</span></a> resume los métodos para especificar valores en binario, hexadecimal y decimal para VHDL.</p>
 <table class="table table-left" id="tabla2">
 <caption><span class="caption-number">Tabla 2 </span><span class="caption-text">Tabla de representaciones</span><a class="headerlink" href="#tabla2" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Sistema numérico</p></th>
 <th class="head"><p>VHDL</p></th>
@@ -503,8 +496,8 @@ que representa un patrón de bits binarios. Estos valores numéricos se denomina
 <li><p>El equivalente decimal es <span class="math notranslate nohighlight">\(10101=15_{16}=21_{10}\)</span></p></li>
 <li><p>el decimal en VHDL se expresa de la misma forma: <strong>25</strong>.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

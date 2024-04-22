@@ -243,3 +243,9 @@ La salida de la simulación en vivado es:
 :name: suma_comp_salida
 Simulación del sumador completo.
 ```
+
+
+
+
+
+

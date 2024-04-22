@@ -403,7 +403,7 @@ Suma de dos números de cuatro bits.
 
 ### Simulación del sumador con acarreo serie
 
-La descripción en VHDL del sumador en serie incluye a la drscripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador serie se muestra abajo:
+La descripción en VHDL del sumador en serie incluye a la descripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador serie se muestra abajo:
 
 ```VHDL
 --------------------------------------------------
@@ -483,11 +483,8 @@ USE ieee.std_logic_1164.ALL;
  
 entity tb_sumador_serie is
 end tb_sumador_serie;
- 
 architecture arq of tb_sumador_serie is
- 
 -- Declaración del diseño bajo prueba DUT
- 
 component sumador_serie
 Port ( X : in STD_LOGIC_VECTOR (3 downto 0);
        Y : in STD_LOGIC_VECTOR (3 downto 0);
@@ -505,13 +502,10 @@ end component;
 signal test_X : std_logic_vector(3 downto 0):= (others => '0');
 signal test_Y : std_logic_vector(3 downto 0):= (others => '0');
 signal test_C0 : std_logic:= '0';
- 
 --Salidas
 signal test_S : std_logic_vector(3 downto 0);
 signal test_Cout : std_logic;
- 
 begin
- 
 -- Inicializaciond del DUT
 DUT: sumador_serie 
 Port map (
@@ -521,7 +515,6 @@ C0 => test_C0,
 S => test_S,
 C4 => test_Cout
 );
- 
 -- Proceso de pruebas
 process
 begin
@@ -535,23 +528,17 @@ test_Y <= "1100";
 wait for 100 ns;
 test_X <= "1111";
 test_Y <= "1100";
- 
 wait for 100 ns;
 test_X <= "0110";
 test_Y <= "0111";
- 
 wait for 100 ns;
 test_X <= "0110";
 test_Y <= "1110";
- 
 wait for 100 ns;
 test_X <= "1111";
 test_Y <= "1111";
-
 wait;
-
 end process;
-
 end;
 ```
 
