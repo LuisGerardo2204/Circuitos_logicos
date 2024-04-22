@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Resta binaria &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'resta_binaria';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Bibliografía" href="Bibliograf%C3%ADa.html" />
+    <link rel="prev" title="Uso del testbench o banco de pruebas en simulaciones" href="simulaciones_testbench.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_UPIIH.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_UPIIH.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Material didáctico de circuitos lógicos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_VHDL.html">Formas de especificar el comportamiento de un circuito lógico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compuertas_VHDL.html">Compuertas Lógicas en VHDL</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="estructuras_control_VHDL.html">Estructuras de control de flujo o de desición en VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resta binaria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/resta_binaria.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Resta binaria</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumador-restador-binario">Sumador-restador binario</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="resta-binaria">
+<h1>Resta binaria<a class="headerlink" href="#resta-binaria" title="Permalink to this heading">#</a></h1>
+<p>Un método muy popular para realizar una resta de dos númneros binarios es el uso del complemento a dos. El complemento a dos de un número binario se obtiene de la sigiente forma:</p>
+<p>Se determina el complemento a uno de un número binario de <span class="math notranslate nohighlight">\(N\)</span> dígitos al aplicar la negación a cada uno de los bits de dicho número, por ejemplo, el complemento a 1 del número binario <span class="math notranslate nohighlight">\(101101\)</span> es <span class="math notranslate nohighlight">\(010010\)</span>. De manera similar, para otras bases se define el complemento; el complemento a 9 de un número decimal se obtiene al al restar cada dígito de 9, para el caso del sistema octal, se restan de 7 y para el hexadecimal se restan de 15:</p>
+<p>a. El complemento a <span class="math notranslate nohighlight">\(9\)</span> de <span class="math notranslate nohighlight">\(876\)</span> es: <span class="math notranslate nohighlight">\(123\)</span>.</p>
+<p>b. El complemento a <span class="math notranslate nohighlight">\(15\)</span> de <span class="math notranslate nohighlight">\(FE\)</span> es: <span class="math notranslate nohighlight">\(EA\)</span>.</p>
+<p>c. El complemento a <span class="math notranslate nohighlight">\(7\)</span> de <span class="math notranslate nohighlight">\(54\)</span> es: <span class="math notranslate nohighlight">\(23\)</span>.</p>
+<p>Como puede observarse, determinar el complemento a 1 de un número binario es más simple. El complemento a 2 se obtiene al sumar un uno al complemento a unos de un número binario.</p>
+<p>a. El complemento a 2 de <span class="math notranslate nohighlight">\(101110\)</span> es: <span class="math notranslate nohighlight">\(010001\)</span>.</p>
+<p>b. El complemento a 2 de <span class="math notranslate nohighlight">\(111111\)</span> es: <span class="math notranslate nohighlight">\(000001\)</span>.</p>
+<p>Para realizar la resta binaria de dos números, se obtiene el complemento a 2 de uno de los operandos y se le suma al operando restante. Por ejemplo, sean los números binarios <span class="math notranslate nohighlight">\(X=1011011\)</span> e <span class="math notranslate nohighlight">\(Y=1001110\)</span>, la resta <span class="math notranslate nohighlight">\(Z=X-Y\)</span> se obtiene al sumar el complemento a 2 de <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+X+comp_2(Y)=1011011+0110001=91_{10}-78_{10}=13_{10}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+ &amp;1011011\\
++&amp;0110010\\
+&amp;\overline{~~~~~~~~~~~~~~~~~}\\
+Z=1&amp;0001101
+\end{eqnarray}
+\end{split}\]</div>
+<p>Se ignora el último acarreo y solo se considera al número <span class="math notranslate nohighlight">\(1101=13_{10}\)</span> como el resultado de la resta. Por otra parte, la resta <span class="math notranslate nohighlight">\(W=Y-X\)</span> se calcula como:</p>
+<div class="math notranslate nohighlight">
+\[
+Y+comp_2(X)=1001110+0100101=78_{10}-91_{10}=-13_{10}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+  &amp;1001110\\
+ +&amp;0100101\\
+&amp;\overline{~~~~~~~~~~~~~~~~~}\\
+Z=&amp;1110011
+\end{eqnarray}
+\end{split}\]</div>
+<p>En este caso, al no haber acarreo, se calcula el complemento a dos del resultado para obeter el valor real de la resta y se anexa el signo de negativo:</p>
+<div class="math notranslate nohighlight">
+\[
+Y-X=-comp_2(1110011)=-0001101=-13_{10}
+\]</div>
+<section id="sumador-restador-binario">
+<h2>Sumador-restador binario<a class="headerlink" href="#sumador-restador-binario" title="Permalink to this heading">#</a></h2>
+<p>Usando el complemento a 1 y el complemento a 2 hemos suprimido la operación de la resta y
+solamente necesitamos un complementador apropiado y un sumador. Cuando realizamos una
+resta complementamos el substraendo N, mientras que para sumar no es necesario. Estas operaciones
+se pueden lograr usando un complementador selectivo y un sumador interconectados
+para formar un sumador-restador. Empleamos el complemento a 2 por ser el más habitual en los
+sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole
+1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos
+inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del
+sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
+del sumador, se obtiene muy económicamente el complemento a 2. En la resta en complemento
+a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado
+y añadirle un signo menos si se produce acarreo final. La operación de corrección se realiza
+empleando cualquier sumador-restador una segunda vez con M%0 o un complementador selectivo
+como el de la Figura 5-7.</p>
+<p>En la <a class="reference internal" href="#sumador-restador"><span class="std std-numref">Figura 25</span></a> se muestra un circuito sumador-restador de 4 bits. La entrada S controla el funcionamiento. Cuando
+S%0 el circuito funciona como un sumador, y cuando S%1 el circuito se convierte en un
+restador. Cada puerta OR exclusiva recibe la entrada S y una de las entradas de B, Bi. Cuando
+S%0, tenemos Bi0. Si los sumadores completos reciben el valor de B, y la entrada de acarreo
+es 0, el circuito realiza A!B. Cuando S%1, tenemos Bi1%Bi y C0%1. En este caso,
+el circuito realiza la operación A!el complemento a 2 de B.</p>
+<figure class="align-default" id="sumador-restador">
+<a class="reference internal image-reference" href="_images/sumador_restador.png"><img alt="_images/sumador_restador.png" src="_images/sumador_restador.png" style="width: 800px; height: 250px;" /></a>
+<figcaption>
+<p><span class="caption-number">Figura 25 </span><span class="caption-text">Diagrama de un sumador-restador con acarreo serie.</span><a class="headerlink" href="#sumador-restador" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+<p>La descripción en VHDL del sumador-restador incluye a la descripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador-restador se muestra abajo:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------------------------</span>
+<span class="c1">-- Código VHDL para la descripción de </span>
+<span class="c1">--    un sumador-restador con acarreo </span>
+<span class="c1">-- serie de dos números de 4 bits</span>
+<span class="c1">--------------------------------------------------</span>
+<span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">ALL</span><span class="p">;</span>
+<span class="c1">------------------------------------------------  </span>
+<span class="c1">-- Se usa la descripción de un bloque </span>
+<span class="c1">--   básico el cual es un sumador completo</span>
+<span class="c1">--------------------------------------------------</span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="w"> </span><span class="k">is</span>
+<span class="w"> </span><span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">Z</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="p">;</span>
+<span class="c1">-- Se describe la arquitectura a nivel compuerta </span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">nivel_compuerta</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="w"> </span><span class="k">is</span>
+<span class="w"> </span>
+<span class="k">begin</span>
+<span class="w"> </span>
+<span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Z</span><span class="w"> </span><span class="p">;</span>
+<span class="w"> </span><span class="n">Cout</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">X</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">end</span><span class="w"> </span><span class="nc">nivel_compuerta</span><span class="p">;</span><span class="w"> </span>
+<span class="c1">----------------------------------------------------</span>
+<span class="c1">-- Se describe la entidad sumador-restador que </span>
+<span class="c1">-- contiene al sumador completo como bloque </span>
+<span class="c1">-- fundamental</span>
+<span class="c1">-------------------------------------------------</span>
+<span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">ALL</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="w"> </span><span class="k">is</span>
+<span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">       </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">C4</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="w"> </span><span class="k">is</span>
+<span class="w"> </span>
+<span class="c1">-- Declaración del uso del sumador completo</span>
+<span class="c1">-- como bloque básico</span>
+<span class="k">component</span><span class="w"> </span><span class="nc">sumador_completo</span>
+<span class="w"> </span><span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">Z</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">         </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="c1">-- Acarreos intermedios</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">,</span><span class="n">c3</span><span class="o">:</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">begin</span>
+<span class="w"> </span>
+<span class="c1">-- Mapeo del sumador completo 4 veces, usado etiquetas </span>
+<span class="c1">-- Sc para interconectar los bloques</span>
+<span class="n">Sc1</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span>
+<span class="n">Sc2</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
+<span class="n">Sc3</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">c3</span><span class="p">);</span>
+<span class="n">Sc4</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">C4</span><span class="p">);</span>
+<span class="w"> </span>
+<span class="k">end</span><span class="w"> </span><span class="nc">arq</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>El contenido del archivo test bench incluye al sumador-restador como un componente, el cual se utiliza para declarar al diseño bajo prueba (DUT), el código VHDL del test bench es el siguiente:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
+<span class="k">USE</span><span class="w"> </span><span class="nn">ieee.std_logic_1164.</span><span class="k">ALL</span><span class="p">;</span>
+<span class="w"> </span>
+<span class="k">entity</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="w"> </span><span class="k">is</span>
+<span class="k">end</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="p">;</span>
+
+<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="w"> </span><span class="k">is</span>
+<span class="c1">-- Declaración del diseño bajo prueba DUT</span>
+<span class="k">component</span><span class="w"> </span><span class="nc">sumador_restador</span>
+<span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
+<span class="w">       </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">       </span><span class="n">C4</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
+<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span>
+<span class="c1">------------------------------------------------</span>
+<span class="c1">--   Entradas</span>
+<span class="c1">--  en este caso es importante usar valores por defecto</span>
+<span class="c1">--- para iniciar la simulación, usanod la asignación</span>
+<span class="c1">--- especial := (others =&gt; &#39;0&#39;) para vectores de bits</span>
+<span class="c1">---- y := &#39;0&#39; para bits.</span>
+<span class="c1">-------------------------------------------------</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">test_X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">test_Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">test_R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="o">:=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="c1">--Salidas</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">test_S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">test_Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">;</span>
+<span class="k">begin</span>
+<span class="c1">-- Inicializacion del DUT</span>
+<span class="n">DUT</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_restador</span>
+<span class="k">Port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span>
+<span class="n">X</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_X</span><span class="p">,</span>
+<span class="n">Y</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_Y</span><span class="p">,</span>
+<span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_R</span><span class="p">,</span>
+<span class="n">S</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_S</span><span class="p">,</span>
+<span class="n">C4</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_Cout</span>
+<span class="p">);</span>
+<span class="c1">-- Proceso de pruebas</span>
+<span class="k">process</span>
+<span class="k">begin</span>
+<span class="c1">-- Mantener reset inical por 100ns</span>
+<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
+<span class="c1">-- Se prueban varias combinaciones de </span>
+<span class="c1">-- sumandos y sustraendos</span>
+<span class="n">test_X</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1100&quot;</span><span class="p">;</span>
+<span class="n">test_Y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;0110&quot;</span><span class="p">;</span>
+<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
+<span class="c1">--- -------------------</span>
+<span class="n">test_R</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="n">test_X</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1100&quot;</span><span class="p">;</span>
+<span class="n">test_Y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;0110&quot;</span><span class="p">;</span>
+<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
+<span class="c1">---------------------</span>
+<span class="k">wait</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span>
+<span class="k">end</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "Octave"
+        },
+        kernelOptions: {
+            name: "Octave",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'Octave'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="simulaciones_testbench.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Uso del testbench o banco de pruebas en simulaciones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Bibliograf%C3%ADa.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Bibliografía</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumador-restador-binario">Sumador-restador binario</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Luis Gerardo Trujillo Franco
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

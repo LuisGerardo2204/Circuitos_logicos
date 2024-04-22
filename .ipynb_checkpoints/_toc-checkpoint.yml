@@ -10,6 +10,7 @@ chapters:
 - file: estructuras_control_VHDL.md
 - file: circuitos_aritmeticos.md
 - file: simulaciones_testbench.md
-- file: resta_binaria.md
+#- file: Practica3
+#- file: Practica4
 - file: Bibliografía
 
