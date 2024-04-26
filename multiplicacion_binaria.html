@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Bibliografía &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+    <title>Multiplicación binaria &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
   
@@ -65,10 +65,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Bibliografía';</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'multiplicacion_binaria';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="prev" title="Código VHDL para un multiplicador binario de cuatro bits." href="Codigo_multiplicador.html" />
+    <link rel="next" title="Código VHDL para un multiplicador binario de cuatro bits." href="Codigo_multiplicador.html" />
+    <link rel="prev" title="Resta binaria" href="resta_binaria.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
   </head>
@@ -170,9 +173,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resta_binaria.html">Resta binaria</a></li>
-<li class="toctree-l1"><a class="reference internal" href="multiplicacion_binaria.html">Multiplicación binaria</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiplicación binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bibliografía</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
     </div>
@@ -227,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/Bibliografía.md" target="_blank"
+      <li><a href="_sources/multiplicacion_binaria.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Descargar archivo fuente"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +310,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bibliografía</h1>
+    <h1>Multiplicación binaria</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -321,19 +324,46 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="bibliografia">
-<h1>Bibliografía<a class="headerlink" href="#bibliografia" title="Permalink to this heading">#</a></h1>
-<div class="docutils container" id="id1">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>MK17<span class="fn-bracket">]</span></span>
-<p>M. Morris. Mano and Charles. Kime. <em>Fundamentos de diseño lógico y computadoras.</em> Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.</p>
-</div>
-<div class="citation" id="id2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>TWM17<span class="fn-bracket">]</span></span>
-<p>Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. <em>Digital systems: principles and applications.</em> Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.</p>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="multiplicacion-binaria">
+<h1>Multiplicación binaria<a class="headerlink" href="#multiplicacion-binaria" title="Permalink to this heading">#</a></h1>
+<p>La multiplicación de números binarios se realiza de la misma manera que con los números decimales. El multiplicando se multiplica por cada bit del multiplicador, empezando por el bit menos significativo. Cada una de estas multiplicaciones forma un producto parcial. Cada uno de estos productos parciales se desplaza un bit a la izquierda. El producto final se obtiene de la suma de los productos parciales.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+&amp;~X_3 X_2 X_1 X_0\\
+&amp;\times Y_3 Y_2 Y_1 Y_0\\
+&amp;\overline{~~~~~~~~~~~~~~~~~~~~~}\\
+&amp;X_3Y_0~~X_2Y_0~~X_1Y_0~~X_0Y_0~~~~~~~~~~~~~~~~~~~~\\
+&amp;X_3Y_1~~X_2Y_1~~X_1Y_1~~X_0Y_1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+&amp;X_3Y_3~~X_2Y_2~~X_1Y_2~~X_0Y_2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+&amp;X_3Y_3~~X_2Y_3~~X_1Y_3~~X_0Y_3~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+&amp;\overline{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\\
+&amp;P_7~~~~~~~P_6~~~~~~~P_5~~~~~~~P_4~~~~~~~P_3~~~~~~~P_2~~~~~~~P_1~~~~~~~P_0~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+\end{eqnarray}
+\end{split}\]</div>
+<p>Un ejemplo de la multiplicación de dos números de 4 bis se muestra abajo. La multiplicación de los números <span class="math notranslate nohighlight">\(X=1011\)</span> y <span class="math notranslate nohighlight">\(Y=1010\)</span> equivale a <span class="math notranslate nohighlight">\(P=01101110\)</span>, en decimal se tendría el producto: <span class="math notranslate nohighlight">\(P=10_{10}\times 11_{10}=156_{10}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+&amp;~~~~~1011\\
+&amp;\times 1010\\
+&amp;\overline{~~~~~~~~~~~~~~~~~}\\
+&amp;0~~0~~0~~0\\
+&amp;1~~0~~1~~1~~~~~~~~\\
+&amp;0~~0~~0~~0~~~~~~~~~~~~~~~~\\
+&amp;1~~0~~1~~1~~~~~~~~~~~~~~~~~~~~~~~~\\
+&amp;\overline{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}~~~~~~~~~~~~~~\\
+&amp;0~~1~~1~~0~~1~~1~~1~~0~~~~~~~~~~~~~~~~
+\end{eqnarray}
+\end{split}\]</div>
+<p>El diagrama de bloques del circuito multiplicador de 4 bits se muestra abajo:</p>
+<figure class="align-default" id="multiplicador">
+<a class="reference internal image-reference" href="_images/multiplicador.png"><img alt="_images/multiplicador.png" src="_images/multiplicador.png" style="height: 750px;" /></a>
+<figcaption>
+<p><span class="caption-number">Figura 26 </span><span class="caption-text">Diagrama de bloques de un multiplicador binario de 4 bits.</span><a class="headerlink" href="#multiplicador" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+<p>El código VHDL del multiplicador binario integra los módulos descritos en la sección anterior, integra tres sumadores de cuatro bits con acarreo serie y los respectivos sub módulos de sumador completo de dos bits.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -345,16 +375,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "Octave"
         },
         kernelOptions: {
-            name: "python3",
+            name: "Octave",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'Octave'</script>
 
                 </article>
               
@@ -368,13 +398,22 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Codigo_multiplicador.html"
+       href="resta_binaria.html"
        title="página anterior">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Resta binaria</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Codigo_multiplicador.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
         <p class="prev-next-title">Código VHDL para un multiplicador binario de cuatro bits.</p>
       </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
