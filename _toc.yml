@@ -11,5 +11,7 @@ chapters:
 - file: circuitos_aritmeticos.md
 - file: simulaciones_testbench.md
 - file: resta_binaria.md
+- file: multiplicacion_binaria.md
+- file: Codigo_multiplicador.md
 - file: Bibliografía
 

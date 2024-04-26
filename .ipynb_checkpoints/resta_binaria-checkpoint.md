@@ -69,29 +69,11 @@ $$
 
 ## Sumador-restador binario
 
-Usando el complemento a 1 y el complemento a 2 hemos suprimido la operación de la resta y
-solamente necesitamos un complementador apropiado y un sumador. Cuando realizamos una
-resta complementamos el substraendo N, mientras que para sumar no es necesario. Estas operaciones
-se pueden lograr usando un complementador selectivo y un sumador interconectados
-para formar un sumador-restador. Empleamos el complemento a 2 por ser el más habitual en los
-sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole
-1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos
-inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del
-sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
-del sumador, se obtiene muy económicamente el complemento a 2. En la resta en complemento
-a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado
-y añadirle un signo menos si se produce acarreo final. La operación de corrección se realiza
-empleando cualquier sumador-restador una segunda vez con M%0 o un complementador selectivo
-como el de la Figura 5-7.
+Usando el complemento a 2 se suprime la operación de la resta y solamente se hace necesario un complementador apropiado y un sumador completo como el que se desarrolló en las secciones anteriores. Cuando realizamos una resta complementamos a dos el substraendo, mientras que para sumar no es necesario. Estas operaciones se pueden lograr usando un complementador selectivo y un sumadorcompleto conectados para formar un sumador-restador.El complemento a 2 se aplica por ser el más habitual en los
+sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole 1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
+del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la resta en complemento a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado y añadirle un signo menos si se produce acarreo final. 
 
-En la {numref}`sumador_restador` se muestra un circuito sumador-restador de 4 bits. La entrada S controla el funcionamiento. Cuando
-S%0 el circuito funciona como un sumador, y cuando S%1 el circuito se convierte en un
-restador. Cada puerta OR exclusiva recibe la entrada S y una de las entradas de B, Bi. Cuando
-S%0, tenemos Bi0. Si los sumadores completos reciben el valor de B, y la entrada de acarreo
-es 0, el circuito realiza A!B. Cuando S%1, tenemos Bi1%Bi y C0%1. En este caso,
-el circuito realiza la operación A!el complemento a 2 de B.
-
-
+En la {numref}`sumador_restador` se muestra un circuito sumador-restador de 4 bits. La entrada $R$ controla el funcionamiento. Cuando $R=0$ el circuito funciona como un sumador, y cuando $R=1$ el circuito se convierte en un restador. Cada puerta OR exclusiva recibe la entrada $R$ y una de las entradas de $Y$, $Y_i$. Cuando $R=0$, tenemos $Y_i \oplus 0$. Si los sumadores completos reciben el valor de $Y$, y la entrada de acarreo es 0, el circuito realiza $A+B$. Cuando $R=1$, tenemos $Y_i \oplus 1=\overline{Y}_i$ y $C_0=1$. En este caso, el circuito realiza la operación $A+comp_2(B)$.
 
 ```{figure} /images/sumador_restador.png
 :height: 250px
@@ -177,14 +159,15 @@ El contenido del archivo test bench incluye al sumador-restador como un componen
 library IEEE;
 USE ieee.std_logic_1164.ALL;
  
-entity tb_sumador_serie is
-end tb_sumador_serie;
-architecture arq of tb_sumador_serie is
+entity tb_sumador_restador is
+end tb_sumador_restador;
+
+architecture arq of tb_sumador_restador is
 -- Declaración del diseño bajo prueba DUT
-component sumador_serie
+component sumador_restador
 Port ( X : in STD_LOGIC_VECTOR (3 downto 0);
        Y : in STD_LOGIC_VECTOR (3 downto 0);
-       C0 : in STD_LOGIC;
+       R : in STD_LOGIC;
        S : out STD_LOGIC_VECTOR (3 downto 0);
        C4 : out STD_LOGIC);
 end component;
@@ -197,17 +180,17 @@ end component;
 -------------------------------------------------
 signal test_X : std_logic_vector(3 downto 0):= (others => '0');
 signal test_Y : std_logic_vector(3 downto 0):= (others => '0');
-signal test_C0 : std_logic:= '0';
+signal test_R : std_logic:= '0';
 --Salidas
 signal test_S : std_logic_vector(3 downto 0);
 signal test_Cout : std_logic;
 begin
--- Inicializaciond del DUT
-DUT: sumador_serie 
+-- Inicializacion del DUT
+DUT: sumador_restador
 Port map (
 X => test_X,
 Y => test_Y,
-C0 => test_C0,
+R => test_R,
 S => test_S,
 C4 => test_Cout
 );
@@ -217,25 +200,17 @@ begin
 -- Mantener reset inical por 100ns
 wait for 100 ns;
 -- Se prueban varias combinaciones de 
--- sumandos
-test_X <= "0110";
-test_Y <= "1100";
---- 
+-- sumandos y sustraendos
+test_X <= "1100";
+test_Y <= "0110";
 wait for 100 ns;
-test_X <= "1111";
-test_Y <= "1100";
+--- -------------------
+test_R <= '1';
+test_X <= "1100";
+test_Y <= "0110";
 wait for 100 ns;
-test_X <= "0110";
-test_Y <= "0111";
-wait for 100 ns;
-test_X <= "0110";
-test_Y <= "1110";
-wait for 100 ns;
-test_X <= "1111";
-test_Y <= "1111";
+---------------------
 wait;
 end process;
-end;
-
 end;
 ```
