@@ -300,9 +300,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -318,14 +316,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contenido </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumador-restador-binario">Sumador-restador binario</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -476,169 +466,6 @@ el signo y la magnitud corregida del resultado, se obtiene <span class="math not
 </tr>
 </tbody>
 </table>
-<p>l número <span class="math notranslate nohighlight">\(1101=13_{10}\)</span> como el resultado de la resta. Por otra parte, la resta <span class="math notranslate nohighlight">\(W=Y-X\)</span> se calcula como:</p>
-<div class="math notranslate nohighlight">
-\[
-Y+comp_2(X)=1001110+0100101=78_{10}-91_{10}=-13_{10}
-\]</div>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{eqnarray}
-  &amp;1001110\\
- +&amp;0100101\\
-&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-Z=&amp;1110011
-\end{eqnarray}
-\end{split}\]</div>
-<p>En este caso, al no haber acarreo, se calcula el complemento a dos del resultado para obeter el valor real de la resta y se anexa el signo de negativo:</p>
-<div class="math notranslate nohighlight">
-\[
-Y-X=-comp_2(1110011)=-0001101=-13_{10}
-\]</div>
-<section id="sumador-restador-binario">
-<h2>Sumador-restador binario<a class="headerlink" href="#sumador-restador-binario" title="Permalink to this heading">#</a></h2>
-<p>Usando el complemento a 2 se suprime la operación de la resta y solamente se hace necesario un complementador apropiado y un sumador completo como el que se desarrolló en las secciones anteriores. Cuando realizamos una resta complementamos a dos el substraendo, mientras que para sumar no es necesario. Estas operaciones se pueden lograr usando un complementador selectivo y un sumadorcompleto conectados para formar un sumador-restador.El complemento a 2 se aplica por ser el más habitual en los
-sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole 1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
-del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la resta en complemento a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado y añadirle un signo menos si se produce acarreo final.</p>
-<p>En la <a class="reference internal" href="#sumador-restador"><span class="std std-numref">Figura 27</span></a> se muestra un circuito sumador-restador de 4 bits. La entrada <span class="math notranslate nohighlight">\(R\)</span> controla el funcionamiento. Cuando <span class="math notranslate nohighlight">\(R=0\)</span> el circuito funciona como un sumador, y cuando <span class="math notranslate nohighlight">\(R=1\)</span> el circuito se convierte en un restador. Cada puerta OR exclusiva recibe la entrada <span class="math notranslate nohighlight">\(R\)</span> y una de las entradas de <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y_i\)</span>. Cuando <span class="math notranslate nohighlight">\(R=0\)</span>, tenemos <span class="math notranslate nohighlight">\(Y_i \oplus 0\)</span>. Si los sumadores completos reciben el valor de <span class="math notranslate nohighlight">\(Y\)</span>, y la entrada de acarreo es 0, el circuito realiza <span class="math notranslate nohighlight">\(A+B\)</span>. Cuando <span class="math notranslate nohighlight">\(R=1\)</span>, tenemos <span class="math notranslate nohighlight">\(Y_i \oplus 1=\overline{Y}_i\)</span> y <span class="math notranslate nohighlight">\(C_0=1\)</span>. En este caso, el circuito realiza la operación <span class="math notranslate nohighlight">\(A+comp_2(B)\)</span>.</p>
-<figure class="align-default" id="sumador-restador">
-<a class="reference internal image-reference" href="_images/sumador_restador.png"><img alt="_images/sumador_restador.png" src="_images/sumador_restador.png" style="width: 800px; height: 250px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 27 </span><span class="caption-text">Diagrama de un sumador-restador con acarreo serie.</span><a class="headerlink" href="#sumador-restador" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-<p>La descripción en VHDL del sumador-restador incluye a la descripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador-restador se muestra abajo:</p>
-<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------------------------</span>
-<span class="c1">-- Código VHDL para la descripción de </span>
-<span class="c1">--    un sumador-restador con acarreo </span>
-<span class="c1">-- serie de dos números de 4 bits</span>
-<span class="c1">--------------------------------------------------</span>
-<span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
-<span class="k">use</span><span class="w"> </span><span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">ALL</span><span class="p">;</span>
-<span class="c1">------------------------------------------------  </span>
-<span class="c1">-- Se usa la descripción de un bloque </span>
-<span class="c1">--   básico el cual es un sumador completo</span>
-<span class="c1">--------------------------------------------------</span>
-<span class="k">entity</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="w"> </span><span class="k">is</span>
-<span class="w"> </span><span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">Z</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
-<span class="k">end</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="p">;</span>
-<span class="c1">-- Se describe la arquitectura a nivel compuerta </span>
-<span class="k">architecture</span><span class="w"> </span><span class="nc">nivel_compuerta</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">sumador_completo</span><span class="w"> </span><span class="k">is</span>
-<span class="w"> </span>
-<span class="k">begin</span>
-<span class="w"> </span>
-<span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Z</span><span class="w"> </span><span class="p">;</span>
-<span class="w"> </span><span class="n">Cout</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">X</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">X</span><span class="p">)</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="p">(</span><span class="n">Z</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">Y</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="w"> </span>
-<span class="k">end</span><span class="w"> </span><span class="nc">nivel_compuerta</span><span class="p">;</span><span class="w"> </span>
-<span class="c1">----------------------------------------------------</span>
-<span class="c1">-- Se describe la entidad sumador-restador que </span>
-<span class="c1">-- contiene al sumador completo como bloque </span>
-<span class="c1">-- fundamental</span>
-<span class="c1">-------------------------------------------------</span>
-<span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
-<span class="k">use</span><span class="w"> </span><span class="nn">IEEE.STD_LOGIC_1164.</span><span class="k">ALL</span><span class="p">;</span>
-<span class="w"> </span>
-<span class="k">entity</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="w"> </span><span class="k">is</span>
-<span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">       </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">C4</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
-<span class="k">end</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="p">;</span>
-<span class="w"> </span>
-<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">sumador_restador</span><span class="w"> </span><span class="k">is</span>
-<span class="w"> </span>
-<span class="c1">-- Declaración del uso del sumador completo</span>
-<span class="c1">-- como bloque básico</span>
-<span class="k">component</span><span class="w"> </span><span class="nc">sumador_completo</span>
-<span class="w"> </span><span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w">  </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">Z</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">         </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">      </span><span class="n">Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
-<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span>
-<span class="w"> </span>
-<span class="c1">-- Acarreos intermedios</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="n">c2</span><span class="p">,</span><span class="n">c3</span><span class="o">:</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w"> </span>
-<span class="k">begin</span>
-<span class="w"> </span>
-<span class="c1">-- Mapeo del sumador completo 4 veces, usado etiquetas </span>
-<span class="c1">-- Sc para interconectar los bloques</span>
-<span class="n">Sc1</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="n">c1</span><span class="p">);</span>
-<span class="n">Sc2</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">c1</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">c2</span><span class="p">);</span>
-<span class="n">Sc3</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">c2</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">c3</span><span class="p">);</span>
-<span class="n">Sc4</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_completo</span><span class="w"> </span><span class="k">port</span><span class="w"> </span><span class="k">map</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">R</span><span class="w"> </span><span class="k">XOR</span><span class="w"> </span><span class="n">Y</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">c3</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">C4</span><span class="p">);</span>
-<span class="w"> </span>
-<span class="k">end</span><span class="w"> </span><span class="nc">arq</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>El contenido del archivo test bench incluye al sumador-restador como un componente, el cual se utiliza para declarar al diseño bajo prueba (DUT), el código VHDL del test bench es el siguiente:</p>
-<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="k">library</span><span class="w"> </span><span class="nn">IEEE</span><span class="p">;</span>
-<span class="k">USE</span><span class="w"> </span><span class="nn">ieee.std_logic_1164.</span><span class="k">ALL</span><span class="p">;</span>
-<span class="w"> </span>
-<span class="k">entity</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="w"> </span><span class="k">is</span>
-<span class="k">end</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="p">;</span>
-
-<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">tb_sumador_restador</span><span class="w"> </span><span class="k">is</span>
-<span class="c1">-- Declaración del diseño bajo prueba DUT</span>
-<span class="k">component</span><span class="w"> </span><span class="nc">sumador_restador</span>
-<span class="k">Port</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">;</span>
-<span class="w">       </span><span class="n">S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC_VECTOR</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="w">       </span><span class="n">C4</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">STD_LOGIC</span><span class="p">);</span>
-<span class="k">end</span><span class="w"> </span><span class="k">component</span><span class="p">;</span>
-<span class="c1">------------------------------------------------</span>
-<span class="c1">--   Entradas</span>
-<span class="c1">--  en este caso es importante usar valores por defecto</span>
-<span class="c1">--- para iniciar la simulación, usanod la asignación</span>
-<span class="c1">--- especial := (others =&gt; &#39;0&#39;) para vectores de bits</span>
-<span class="c1">---- y := &#39;0&#39; para bits.</span>
-<span class="c1">-------------------------------------------------</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">test_X</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">test_Y</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:=</span><span class="w"> </span><span class="p">(</span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">);</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">test_R</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="o">:=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
-<span class="c1">--Salidas</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">test_S</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic_vector</span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="k">downto</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-<span class="k">signal</span><span class="w"> </span><span class="n">test_Cout</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">;</span>
-<span class="k">begin</span>
-<span class="c1">-- Inicializacion del DUT</span>
-<span class="n">DUT</span><span class="o">:</span><span class="w"> </span><span class="n">sumador_restador</span>
-<span class="k">Port</span><span class="w"> </span><span class="k">map</span><span class="w"> </span><span class="p">(</span>
-<span class="n">X</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_X</span><span class="p">,</span>
-<span class="n">Y</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_Y</span><span class="p">,</span>
-<span class="n">R</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_R</span><span class="p">,</span>
-<span class="n">S</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_S</span><span class="p">,</span>
-<span class="n">C4</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">test_Cout</span>
-<span class="p">);</span>
-<span class="c1">-- Proceso de pruebas</span>
-<span class="k">process</span>
-<span class="k">begin</span>
-<span class="c1">-- Mantener reset inical por 100ns</span>
-<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
-<span class="c1">-- Se prueban varias combinaciones de </span>
-<span class="c1">-- sumandos y sustraendos</span>
-<span class="n">test_X</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1100&quot;</span><span class="p">;</span>
-<span class="n">test_Y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;0110&quot;</span><span class="p">;</span>
-<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
-<span class="c1">--- -------------------</span>
-<span class="n">test_R</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
-<span class="n">test_X</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;1100&quot;</span><span class="p">;</span>
-<span class="n">test_Y</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="s">&quot;0110&quot;</span><span class="p">;</span>
-<span class="k">wait</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="n">ns</span><span class="p">;</span>
-<span class="c1">---------------------</span>
-<span class="k">wait</span><span class="p">;</span>
-<span class="k">end</span><span class="w"> </span><span class="k">process</span><span class="p">;</span>
-<span class="k">end</span><span class="p">;</span>
-</pre></div>
-</div>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -699,20 +526,6 @@ del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la rest
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contenido
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sumador-restador-binario">Sumador-restador binario</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
