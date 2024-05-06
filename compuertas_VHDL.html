@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Compuertas Lógicas en VHDL &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -176,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="multiplicacion_binaria.html">Multiplicación binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -341,11 +341,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="compuertas-logicas-en-vhdl">
+  <div class="tex2jax_ignore mathjax_ignore section" id="compuertas-logicas-en-vhdl">
 <h1>Compuertas Lógicas en VHDL<a class="headerlink" href="#compuertas-logicas-en-vhdl" title="Permalink to this heading">#</a></h1>
 <p>El objetivo de esta práctica es aprender a utilizar las compuertas lógicas básicas en VHDL. Las compuertas lógicas son el elemento básico de los sistemas digitales, en la <a class="reference internal" href="#tabla5"><span class="std std-numref">Tabla 5</span></a> se resume el comportamiento o salida de la compuertas básicas en funcion de sus entradas.</p>
 <table class="table table-left" id="tabla5">
 <caption><span class="caption-number">Tabla 5 </span><span class="caption-text">Tabla de verdad de las compuertas básicas</span><a class="headerlink" href="#tabla5" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>A</p></th>
 <th class="head"><p>B</p></th>
@@ -397,8 +407,8 @@ document.write(`
 </tbody>
 </table>
 <p>En la figura <a class="reference internal" href="#compuertas"><span class="std std-numref">Figura 7</span></a> se muestra el circuito lógico para la prueba de múltiples compuertas lógicas. el código en VHDL para simular su comportamiento se muestra abajo.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="formato-en-el-lenguage-vhdl-y-sintaxis">
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="formato-en-el-lenguage-vhdl-y-sintaxis">
 <h1>Formato en el lenguage VHDL y sintaxis<a class="headerlink" href="#formato-en-el-lenguage-vhdl-y-sintaxis" title="Permalink to this heading">#</a></h1>
 <p>Como cualquier lenguage computacional, VHDL tiene propiedades únicas similares a los lenguajes de programación comunes como C#, Java, Python. De la misma manera en la que se estudia gramática cuando se aprende un lenguaje nuevo, un lenguaje que está destinado para se utilizado en una computadora, requiere reglas específicas de sintaxis. La descripción de circuitos lógicos en su forma básica, involucra los siguientes elementos básicos:</p>
 <ol class="arabic simple">
@@ -406,12 +416,10 @@ document.write(`
 <li><p>La definición de la manera en que interactúan o cómo responden el sistema digital ante las entradas y sus cambios.</p></li>
 </ol>
 <p>Por ejemplo, considérese el diagrama lógico de una compuerta OR mostrado en la <a class="reference internal" href="#compuertaor"><span class="std std-numref">Figura 3</span></a></p>
-<figure class="align-default" id="compuertaor">
+<div class="figure align-default" id="compuertaor">
 <a class="reference internal image-reference" href="_images/compuerta.png"><img alt="_images/compuerta.png" src="_images/compuerta.png" style="height: 150px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 3 </span><span class="caption-text">Compuerta OR.</span><a class="headerlink" href="#compuertaor" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 3 </span><span class="caption-text">Compuerta OR.</span><a class="headerlink" href="#compuertaor" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>Dada la universalidad de la simbología utilizada para describirlo, cualquier ingeniero en sistemas computacionales o electrónica será capaz de interpretarlo, de la misma manera, el lenguaje VHDL tiene un caracter específico e independiente del idioma que hable el ingeniero que lo escribe o interpreta.</p>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
@@ -443,15 +451,13 @@ document.write(`
 </pre></div>
 </div>
 <p>En el código anterior, la declaración <code class="docutils literal notranslate"><span class="pre">entity</span></code> puede ser vista como un bloque o caja negra con dos entradas y una salida, es decir, existe algo que encierra o agrupa al circuito cuyo comportamiento se trata de describir o especificar. En VHDL, la parlabra reservada <code class="docutils literal notranslate"><span class="pre">port</span></code> le indica al compilador que se están definiendo entradas y salidas a este bloque o caja negra. Los nombres que se asignan a las entradas, se enlistan separadas por comas <strong>,</strong> y se terminan de enlistar usando punto y coma <strong>;</strong>, además de incluir una descripción del modo y tipo de entrada (<strong>:IN BIT</strong>). La declaración <code class="docutils literal notranslate"><span class="pre">arquitectura</span></code> se usa para describir la operación de lo que se encuentra dentro del bloque. Es tarea del diseñador darle un nombre signifiativo que ofrezca información de la naturaleza inherente al sistema digital que se está describiendo. Cada bloque <code class="docutils literal notranslate"><span class="pre">entity</span></code> que se crea, debe tener al menos una descripción <code class="docutils literal notranslate"><span class="pre">architecture</span></code> asociada, de manera que es posible entender que las palabras reservadas <strong>OF</strong> e <strong>IS</strong>, son clave en la declaración del sistema digital. El cuerpo de la arquitectura o bloque <code class="docutils literal notranslate"><span class="pre">architecture</span></code> se encuentra contenida entonces entre las palabras reservadas <strong>BEGIN</strong> y <strong>END</strong>, indicado así los alcances del comportamiento deseado para el sistema digital que se describe como un bloque. El nombre que se ha asignado a la arquitectura, se escribe seguido de la palabra reservada <strong>END</strong> para indicar el término de la descripción. Esta línea de código termina con punto y coma <strong>;</strong>. Dentro del cuerpo de la arquitectura se especifica el comportamiento, contenido entre las palabras reservadas <strong>BEGIN</strong> y <strong>END</strong>. Es importante mencionar que en VHDL, la asignación <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> se denomina como una asignación <strong>concurrente</strong>, esto significa que todas las sentencias que se encuentran contenidas en la arquitectura, es decir entre las palabras <strong>BEGIN</strong> y <strong>END</strong> se evaluan de forma constante y al mismo tiempo (de forma concurrente), por lo tanto, el orden en que se escriban no hace ninguna diferencia (<span id="id2">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>).</p>
-<section id="senales-intermedias">
+<div class="section" id="senales-intermedias">
 <h2>Señales intermedias<a class="headerlink" href="#senales-intermedias" title="Permalink to this heading">#</a></h2>
 <p>A menudo es necesario utilizar puntos de señal o puntos de prueba en los sistemas digitales. Estos puntos de prueba se encuentran dentro del circuito lógico principal del sistema digital, como se muestra en la <a class="reference internal" href="#intermedias"><span class="std std-numref">Figura 4</span></a>.</p>
-<figure class="align-default" id="intermedias">
+<div class="figure align-default" id="intermedias">
 <a class="reference internal image-reference" href="_images/intermedias.png"><img alt="_images/intermedias.png" src="_images/intermedias.png" style="height: 250px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 4 </span><span class="caption-text">Señales intermedias en un circuito lógico.</span><a class="headerlink" href="#intermedias" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 4 </span><span class="caption-text">Señales intermedias en un circuito lógico.</span><a class="headerlink" href="#intermedias" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>En el siguiente código se muestra la descripción del circuito lógico mostrado en la <a class="reference internal" href="#intermedias"><span class="std std-numref">Figura 4</span></a> en el lenguaje VHDL, para fines ilustrativos de lo expuesto referente a las señales intermedias.</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-------------------------------------------</span>
 <span class="c1">-- Circuito lógico con señales intermedias  </span>
@@ -477,30 +483,24 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simulación en el software vivado que se aprecia en la <a class="reference internal" href="#sim-intermedias"><span class="std std-numref">Figura 5</span></a>  muestra el uso de las señales intermedias y el comportamiento de la salida global <strong>F</strong> del circuito lógico de la <a class="reference internal" href="#intermedias"><span class="std std-numref">Figura 4</span></a>.</p>
-<figure class="align-default" id="sim-intermedias">
+<div class="figure align-default" id="sim-intermedias">
 <a class="reference internal image-reference" href="_images/sim_intermedias.png"><img alt="_images/sim_intermedias.png" src="_images/sim_intermedias.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 5 </span><span class="caption-text">Simulación en vivado del código VHDL.</span><a class="headerlink" href="#sim-intermedias" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="practica-de-compuertas-en-vhdl">
+<p class="caption"><span class="caption-number">Figura 5 </span><span class="caption-text">Simulación en vivado del código VHDL.</span><a class="headerlink" href="#sim-intermedias" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="practica-de-compuertas-en-vhdl">
 <h1>Práctica de compuertas en VHDL<a class="headerlink" href="#practica-de-compuertas-en-vhdl" title="Permalink to this heading">#</a></h1>
 <p>La sintaxis de las compuertas básicas en VHDL se presenta en la siguiente práctica. Considere el circuito lógico de la <a class="reference internal" href="#compuertas"><span class="std std-numref">Figura 7</span></a>, el circuito no cumple ninguna función en particular, simplemente agrupa en el arreglo de bits <strong>F</strong> la salida de las operaciones lógicas básicas aplicadas a las entradas <strong>X</strong> y <strong>Y</strong>. Para generar las combinaciones de las entradas y producir la simulación de una tabla de verdad, se utiliza la instrucción <code class="docutils literal notranslate"><span class="pre">Force</span> <span class="pre">Clock</span></code> en el software vivado. Al bit más significativo se le asigna el periodo más grande. El periodo asignado al bit más significativo se divide a la mitad según se asigna un reloj para emular la tabla de verdad hasta llegar al bit o señal de entrada menos significativo como se muestra en la <a class="reference internal" href="#relojes"><span class="std std-numref">Figura 6</span></a>.</p>
-<figure class="align-default" id="relojes">
+<div class="figure align-default" id="relojes">
 <a class="reference internal image-reference" href="_images/relojes.png"><img alt="_images/relojes.png" src="_images/relojes.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 6 </span><span class="caption-text">Simulación de tablas de verdad usando relojes.</span><a class="headerlink" href="#relojes" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 6 </span><span class="caption-text">Simulación de tablas de verdad usando relojes.</span><a class="headerlink" href="#relojes" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>Para poner a prueba lo expuesto anteriormente y hacer una práctica relacionada con la especifiación y la sintaxis de las compuertas lógicas en VHDL, se utiliza el diagrama lógico de la <a class="reference internal" href="#compuertas"><span class="std std-numref">Figura 7</span></a> y el código debajo de la misma.</p>
-<figure class="align-default" id="compuertas">
+<div class="figure align-default" id="compuertas">
 <a class="reference internal image-reference" href="_images/diagrama3.png"><img alt="_images/diagrama3.png" src="_images/diagrama3.png" style="height: 450px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 7 </span><span class="caption-text">Simulación de compuertas básicas en VHDL.</span><a class="headerlink" href="#compuertas" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 7 </span><span class="caption-text">Simulación de compuertas básicas en VHDL.</span><a class="headerlink" href="#compuertas" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------</span>
 <span class="c1">--Compuertas básicas en VHDL</span>
 <span class="c1">-------------------------------</span>
@@ -531,13 +531,11 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simulación del código anterior se muestra en la <a class="reference internal" href="#sim-compuertas"><span class="std std-numref">Figura 8</span></a></p>
-<figure class="align-default" id="sim-compuertas">
+<div class="figure align-default" id="sim-compuertas">
 <a class="reference internal image-reference" href="_images/sim_compuertas.png"><img alt="_images/sim_compuertas.png" src="_images/sim_compuertas.png" style="height: 350px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 8 </span><span class="caption-text">Simulación en vivado del conjunto de compuertas lógicas.</span><a class="headerlink" href="#sim-compuertas" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
+<p class="caption"><span class="caption-number">Figura 8 </span><span class="caption-text">Simulación en vivado del conjunto de compuertas lógicas.</span><a class="headerlink" href="#sim-compuertas" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {

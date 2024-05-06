@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Multiplicación binaria &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -176,6 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiplicación binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -325,7 +325,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="multiplicacion-binaria">
+  <div class="tex2jax_ignore mathjax_ignore section" id="multiplicacion-binaria">
 <h1>Multiplicación binaria<a class="headerlink" href="#multiplicacion-binaria" title="Permalink to this heading">#</a></h1>
 <p>La multiplicación de números binarios se realiza de la misma manera que con los números decimales. El multiplicando se multiplica por cada bit del multiplicador, empezando por el bit menos significativo. Cada una de estas multiplicaciones forma un producto parcial. Cada uno de estos productos parciales se desplaza un bit a la izquierda. El producto final se obtiene de la suma de los productos parciales.</p>
 <div class="math notranslate nohighlight">
@@ -358,14 +358,12 @@ document.write(`
 \end{eqnarray}
 \end{split}\]</div>
 <p>El diagrama de bloques del circuito multiplicador de 4 bits se muestra abajo:</p>
-<figure class="align-default" id="multiplicador">
+<div class="figure align-default" id="multiplicador">
 <a class="reference internal image-reference" href="_images/multiplicador.png"><img alt="_images/multiplicador.png" src="_images/multiplicador.png" style="height: 750px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 26 </span><span class="caption-text">Diagrama de bloques de un multiplicador binario de 4 bits.</span><a class="headerlink" href="#multiplicador" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 26 </span><span class="caption-text">Diagrama de bloques de un multiplicador binario de 4 bits.</span><a class="headerlink" href="#multiplicador" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>El código VHDL del multiplicador binario integra los módulos descritos en la sección anterior, integra tres sumadores de cuatro bits con acarreo serie y los respectivos sub módulos de sumador completo de dos bits.</p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
