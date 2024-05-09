@@ -7,9 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Resta binaria con signo &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Índice &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
   
@@ -65,13 +64,9 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'resta_con_signo';</script>
-    <link rel="index" title="Índice" href="genindex.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Índice" href="#" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Circuitos lógicos secuenciales" href="circuitos_logicos_secuenciales.html" />
-    <link rel="prev" title="Código VHDL para un multiplicador binario de cuatro bits." href="Codigo_multiplicador.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
   </head>
@@ -162,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_VHDL.html">Formas de especificar el comportamiento de un circuito lógico</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
 
@@ -175,7 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="resta_binaria.html">Resta binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multiplicacion_binaria.html">Multiplicación binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resta binaria con signo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
@@ -222,54 +217,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/resta_con_signo.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Descargar archivo fuente"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Imprimir en PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
   title="Modo de pantalla completa"
@@ -312,7 +259,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Resta binaria con signo</h1>
+    <h1></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -326,168 +273,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="resta-binaria-con-signo">
-<h1>Resta binaria con signo<a class="headerlink" href="#resta-binaria-con-signo" title="Permalink to this heading">#</a></h1>
-<p>La suma de dos números, <span class="math notranslate nohighlight">\(X+Y\)</span>, en el sistema de signo y magnitud sigue las reglas de la aritmética ordinaria: Si los dos signos son iguales, sumamos las magnitudes y se otorga el signo de <span class="math notranslate nohighlight">\(X\)</span> a la suma. Si los signos son diferentes, se resta la magnitud de <span class="math notranslate nohighlight">\(Y\)</span> a la magnitud de <span class="math notranslate nohighlight">\(X\)</span> (<span id="id1">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>). La presencia o asusencia de acarreo final determina el signo del resultado, con base en el signo del número <span class="math notranslate nohighlight">\(X\)</span> y se decide si se corrige usando del complemento a
-dos. Por ejemplo, los números con signo <span class="math notranslate nohighlight">\(X=(0~0011001)\)</span> y <span class="math notranslate nohighlight">\(Y=(1~0100101)\)</span>, la suma se expresa como la resta expresada como <span class="math notranslate nohighlight">\(Z=X+Y=X-Y\)</span>, debido a que <span class="math notranslate nohighlight">\(Y\)</span> tiene signo negativo:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{eqnarray}
-  &amp;0011001\\
- +&amp;1011011\\
-&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-Z=&amp;1110100
-\end{eqnarray}
-\end{split}\]</div>
-<p>Se observa que el resultado es <span class="math notranslate nohighlight">\(1110100\)</span>, y se ha producido un acarreo de <span class="math notranslate nohighlight">\(1\)</span>. El acarreo final indica que la magnitud de <span class="math notranslate nohighlight">\(X\)</span> es menor que la magnitud de <span class="math notranslate nohighlight">\(Y\)</span>. Entonces, el signo del resultado es opuesto al de <span class="math notranslate nohighlight">\(X\)</span> y es, por consiguiente, un signo de (-). El acarreo final también indica que la magnitud del resultado, <span class="math notranslate nohighlight">\(1110100\)</span>, se debe corregir tomando su complemento a 2. Combinando
-el signo y la magnitud corregida del resultado, se obtiene <span class="math notranslate nohighlight">\(1~0001100\)</span>. La regla para sumar números en signo y complemento no requiere ni comparación ni resta, sino sólo suma. El procedimiento es simple y puede exponerse como sigue para los números binarios:</p>
-<p>Algunos ejemplos de suma binaria con signo son los siguientes:</p>
-<div class="math notranslate nohighlight" id="equation-ejemplo-1">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ejemplo-1" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- +6~~~~~&amp;00000110\\
- +13~~+ &amp;00001101\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-19~~~~&amp;00010011
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-2">
-<span class="eqno">(3)<a class="headerlink" href="#equation-ejemplo-2" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- -6~~~~~&amp;11111010\\
- +13~~+ &amp;00001101\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-+7~~~&amp;00000111
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-ejemplo-3" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- +6~~~~~&amp;00000110\\
- -13~~+ &amp;11110011\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
--7~~~&amp;11111001
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-ejemplo-4" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- -6~~~~~&amp;11111010\\
- -13~~+ &amp;11110011\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
--19~~~&amp;11101101
-\end{eqnarray}\end{split}\]</div>
-<table class="table table-left" id="tabla-signos">
-<caption><span class="caption-number">Tabla 10 </span><span class="caption-text">Números binarios con signo</span><a class="headerlink" href="#tabla-signos" title="Enlace permanente a esta tabla">#</a></caption>
-<thead>
-<tr class="row-odd"><th class="head"><p>Decimal</p></th>
-<th class="head"><p>Signo y complemento a 2</p></th>
-<th class="head"><p>Signo y complemento a 1</p></th>
-<th class="head"><p>Signo y magnitud</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>+7</p></td>
-<td><p>0111</p></td>
-<td><p>0111</p></td>
-<td><p>0111</p></td>
-</tr>
-<tr class="row-odd"><td><p>+6</p></td>
-<td><p>0110</p></td>
-<td><p>0110</p></td>
-<td><p>0110</p></td>
-</tr>
-<tr class="row-even"><td><p>+5</p></td>
-<td><p>0101</p></td>
-<td><p>0101</p></td>
-<td><p>0101</p></td>
-</tr>
-<tr class="row-odd"><td><p>+4</p></td>
-<td><p>0100</p></td>
-<td><p>0100</p></td>
-<td><p>0100</p></td>
-</tr>
-<tr class="row-even"><td><p>+3</p></td>
-<td><p>0011</p></td>
-<td><p>0011</p></td>
-<td><p>0011</p></td>
-</tr>
-<tr class="row-odd"><td><p>+2</p></td>
-<td><p>0010</p></td>
-<td><p>0010</p></td>
-<td><p>0010</p></td>
-</tr>
-<tr class="row-even"><td><p>+1</p></td>
-<td><p>0001</p></td>
-<td><p>0001</p></td>
-<td><p>0001</p></td>
-</tr>
-<tr class="row-odd"><td><p>+0</p></td>
-<td><p>0000</p></td>
-<td><p>0000</p></td>
-<td><p>0000</p></td>
-</tr>
-<tr class="row-even"><td><p>-0</p></td>
-<td><p>«##»</p></td>
-<td><p>1111</p></td>
-<td><p>1000</p></td>
-</tr>
-<tr class="row-odd"><td><p>-1</p></td>
-<td><p>1111</p></td>
-<td><p>1110</p></td>
-<td><p>1001</p></td>
-</tr>
-<tr class="row-even"><td><p>-2</p></td>
-<td><p>1110</p></td>
-<td><p>1101</p></td>
-<td><p>1010</p></td>
-</tr>
-<tr class="row-odd"><td><p>-3</p></td>
-<td><p>1101</p></td>
-<td><p>1100</p></td>
-<td><p>1011</p></td>
-</tr>
-<tr class="row-even"><td><p>-4</p></td>
-<td><p>1100</p></td>
-<td><p>1011</p></td>
-<td><p>1100</p></td>
-</tr>
-<tr class="row-odd"><td><p>-5</p></td>
-<td><p>1011</p></td>
-<td><p>1010</p></td>
-<td><p>1101</p></td>
-</tr>
-<tr class="row-even"><td><p>-6</p></td>
-<td><p>1010</p></td>
-<td><p>1001</p></td>
-<td><p>1110</p></td>
-</tr>
-<tr class="row-odd"><td><p>-7</p></td>
-<td><p>1001</p></td>
-<td><p>1000</p></td>
-<td><p>1111</p></td>
-</tr>
-<tr class="row-even"><td><p>-8</p></td>
-<td><p>1000</p></td>
-<td><p>«##»</p></td>
-<td><p>«##»</p></td>
-</tr>
-</tbody>
-</table>
-</section>
 
-    <script type="text/x-thebe-config">
-    {
-        requestKernel: true,
-        binderOptions: {
-            repo: "binder-examples/jupyter-stacks-datascience",
-            ref: "master",
-        },
-        codeMirrorConfig: {
-            theme: "abcdef",
-            mode: "Octave"
-        },
-        kernelOptions: {
-            name: "Octave",
-            path: "./."
-        },
-        predefinedOutput: true
-    }
-    </script>
-    <script>kernelName = 'Octave'</script>
+<h1 id="index">Índice</h1>
+
+<div class="genindex-jumpbox">
+ 
+</div>
+
 
                 </article>
               
@@ -500,24 +292,6 @@ el signo y la magnitud corregida del resultado, se obtiene <span class="math not
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Codigo_multiplicador.html"
-       title="página anterior">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">anterior</p>
-        <p class="prev-next-title">Código VHDL para un multiplicador binario de cuatro bits.</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="circuitos_logicos_secuenciales.html"
-       title="siguiente página">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Circuitos lógicos secuenciales</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
