@@ -7,7 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Resta binaria &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -335,7 +336,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="resta-binaria">
+  <section class="tex2jax_ignore mathjax_ignore" id="resta-binaria">
 <h1>Resta binaria<a class="headerlink" href="#resta-binaria" title="Permalink to this heading">#</a></h1>
 <p>Un método muy popular para realizar una resta de dos númneros binarios es el uso del complemento a dos. El complemento a dos de un número binario se obtiene de la sigiente forma:</p>
 <p>Se determina el complemento a uno de un número binario de <span class="math notranslate nohighlight">\(N\)</span> dígitos al aplicar la negación a cada uno de los bits de dicho número, por ejemplo, el complemento a 1 del número binario <span class="math notranslate nohighlight">\(101101\)</span> es <span class="math notranslate nohighlight">\(010010\)</span>. De manera similar, para otras bases se define el complemento; el complemento a 9 de un número decimal se obtiene al al restar cada dígito de 9, para el caso del sistema octal, se restan de 7 y para el hexadecimal se restan de 15:</p>
@@ -378,16 +379,18 @@ Z=&amp;1110011
 \[
 Y-X=-comp_2(1110011)=-0001101=-13_{10}
 \]</div>
-<div class="section" id="sumador-restador-binario">
+<section id="sumador-restador-binario">
 <h2>Sumador-restador binario<a class="headerlink" href="#sumador-restador-binario" title="Permalink to this heading">#</a></h2>
 <p>Usando el complemento a 2 se suprime la operación de la resta y solamente se hace necesario un complementador apropiado y un sumador completo como el que se desarrolló en las secciones anteriores. Cuando realizamos una resta complementamos a dos el substraendo, mientras que para sumar no es necesario. Estas operaciones se pueden lograr usando un complementador selectivo y un sumadorcompleto conectados para formar un sumador-restador.El complemento a 2 se aplica por ser el más habitual en los
 sistemas modernos. El complemento a 2 se puede obtener tomando el complemento a 1 y sumándole 1 al bit de menor peso. El complemento a 1 se implementa fácilmente a partir de circuitos inversores, mientras que la suma de 1 la conseguimos haciendo la entrada de acarreo del sumador paralelo igual a 1. De esta manera, usando el complemento a 1 y una entrada no usada
 del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la resta en complemento a 2, como en el paso de corrección después de la suma, tenemos que complementar el resultado y añadirle un signo menos si se produce acarreo final.</p>
 <p>En la <a class="reference internal" href="#sumador-restador"><span class="std std-numref">Figura 25</span></a> se muestra un circuito sumador-restador de 4 bits. La entrada <span class="math notranslate nohighlight">\(R\)</span> controla el funcionamiento. Cuando <span class="math notranslate nohighlight">\(R=0\)</span> el circuito funciona como un sumador, y cuando <span class="math notranslate nohighlight">\(R=1\)</span> el circuito se convierte en un restador. Cada puerta OR exclusiva recibe la entrada <span class="math notranslate nohighlight">\(R\)</span> y una de las entradas de <span class="math notranslate nohighlight">\(Y\)</span>, <span class="math notranslate nohighlight">\(Y_i\)</span>. Cuando <span class="math notranslate nohighlight">\(R=0\)</span>, tenemos <span class="math notranslate nohighlight">\(Y_i \oplus 0\)</span>. Si los sumadores completos reciben el valor de <span class="math notranslate nohighlight">\(Y\)</span>, y la entrada de acarreo es 0, el circuito realiza <span class="math notranslate nohighlight">\(A+B\)</span>. Cuando <span class="math notranslate nohighlight">\(R=1\)</span>, tenemos <span class="math notranslate nohighlight">\(Y_i \oplus 1=\overline{Y}_i\)</span> y <span class="math notranslate nohighlight">\(C_0=1\)</span>. En este caso, el circuito realiza la operación <span class="math notranslate nohighlight">\(A+comp_2(B)\)</span>.</p>
-<div class="figure align-default" id="sumador-restador">
+<figure class="align-default" id="sumador-restador">
 <a class="reference internal image-reference" href="_images/sumador_restador.png"><img alt="_images/sumador_restador.png" src="_images/sumador_restador.png" style="width: 800px; height: 250px;" /></a>
-<p class="caption"><span class="caption-number">Figura 25 </span><span class="caption-text">Diagrama de un sumador-restador con acarreo serie.</span><a class="headerlink" href="#sumador-restador" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 25 </span><span class="caption-text">Diagrama de un sumador-restador con acarreo serie.</span><a class="headerlink" href="#sumador-restador" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>La descripción en VHDL del sumador-restador incluye a la descripción del sumador completo. Es posible hacer uso de módulos ya analizados y simulados para conseguir la construcción o descripción de un sistema digital más complejo en el contexto de la lógica combinacional, los sistemas digitales complejos, incluso los microprocesadores de las computadoras son circitos lógicos combinacionales que incorporan infinidad de subsiseños. El código VHDL para el sumador-restador se muestra abajo:</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------------------------</span>
 <span class="c1">-- Código VHDL para la descripción de </span>
@@ -519,8 +522,8 @@ del sumador, se obtiene de una forma muy sencilla el complemento a 2. En la rest
 <span class="k">end</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
