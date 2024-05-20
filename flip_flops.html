@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flip-flops con símbolos gráficos estándar &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'flip_flops';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Bibliografía" href="Bibliograf%C3%ADa.html" />
+    <link rel="next" title="Análisis de circuitos secuenciales" href="analisis_secuenciales.html" />
     <link rel="prev" title="Circuitos lógicos secuenciales" href="circuitos_logicos_secuenciales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
@@ -178,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Flip-flops con símbolos gráficos estándar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_secuenciales.html">Análisis de circuitos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -340,10 +340,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="flip-flops-con-simbolos-graficos-estandar">
+  <div class="tex2jax_ignore mathjax_ignore section" id="flip-flops-con-simbolos-graficos-estandar">
 <h1>Flip-flops con símbolos gráficos estándar<a class="headerlink" href="#flip-flops-con-simbolos-graficos-estandar" title="Permalink to this heading">#</a></h1>
 <p>Los diferentes tipo de latches y flip-flops tienen asignada una simbología estándar para una fácil incluisón en diagrámas lógicos de alta complejidad, en los que sería imposible incluir su especificación a nivel de compuertas lógicas.</p>
-<section id="flip-flop-rs">
+<div class="section" id="flip-flop-rs">
 <h2>Flip-flop RS<a class="headerlink" href="#flip-flop-rs" title="Permalink to this heading">#</a></h2>
 <p>En la <a class="reference internal" href="#ff-rs"><span class="std std-numref">Figura 44</span></a> se presenta la simbología básica para los latches y flip-flops del tipo RS, mientras que la tabla de verdad de estos latches y flip-flops es la <a class="reference internal" href="#tabla-rs-ff"><span class="std std-numref">Tabla 15</span></a>. La expresión lógica, en términos del álgebra de Boole que describe al comportamiento de un flip-flop se conoce como ecuación característica, para el caso del flip-flop SR o RS es la siguiente:</p>
 <div class="math notranslate nohighlight">
@@ -351,14 +351,18 @@ document.write(`
 Q(t+1)=S(t)+\overline{R}(t)Q(t)
 \]</div>
 <p>donde <span class="math notranslate nohighlight">\(Q(t+1)\)</span> es el estado siguiente, <span class="math notranslate nohighlight">\(Q(t)\)</span> es el estado actual y las entradas <span class="math notranslate nohighlight">\(S(t)\)</span> y <span class="math notranslate nohighlight">\(R(t)\)</span> son las entradas Set y Reset respectivamente.</p>
-<figure class="align-default" id="ff-rs">
+<div class="figure align-default" id="ff-rs">
 <a class="reference internal image-reference" href="_images/flip_flops_RS.png"><img alt="_images/flip_flops_RS.png" src="_images/flip_flops_RS.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 44 </span><span class="caption-text">Latches y flip-flops RS, (a) latch RS, (b) flip-flop RS disparado por flanco positivo, (c) latch RS controlado por señal negada y (d) flip-flop RS disparado por flanco negativo (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-rs" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 44 </span><span class="caption-text">Latches y flip-flops RS, (a) latch RS, (b) flip-flop RS disparado por flanco positivo, (c) latch RS controlado por señal negada y (d) flip-flop RS disparado por flanco negativo (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-rs" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <table class="table table-left" id="tabla-rs-ff">
 <caption><span class="caption-number">Tabla 15 </span><span class="caption-text">Tabla de verdad del latch RS</span><a class="headerlink" href="#tabla-rs-ff" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(S\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(R\)</span></strong></p></th>
@@ -430,29 +434,30 @@ Q(t+1)=S(t)+\overline{R}(t)Q(t)
 </pre></div>
 </div>
 <p>La salida de la simualción en Vivado es la siguiente:</p>
-<figure class="align-default" id="srs-clk">
+<div class="figure align-default" id="srs-clk">
 <a class="reference internal image-reference" href="_images/salida_RS_clock.png"><img alt="_images/salida_RS_clock.png" src="_images/salida_RS_clock.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 45 </span><span class="caption-text">Simulación de la salida del flip-flop RS en vivado.</span><a class="headerlink" href="#srs-clk" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="flip-flop-d">
+<p class="caption"><span class="caption-number">Figura 45 </span><span class="caption-text">Simulación de la salida del flip-flop RS en vivado.</span><a class="headerlink" href="#srs-clk" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+<div class="section" id="flip-flop-d">
 <h2>Flip-flop D<a class="headerlink" href="#flip-flop-d" title="Permalink to this heading">#</a></h2>
 <p>El diagrama lógico estándar de un flip-flop tipo D se muestra en la <a class="reference internal" href="#ff-d"><span class="std std-numref">Figura 46</span></a>,  cuya ecuación característica es la siguiente:</p>
 <div class="math notranslate nohighlight">
 \[
 Q(t+1)=D(t)
 \]</div>
-<figure class="align-default" id="ff-d">
+<div class="figure align-default" id="ff-d">
 <a class="reference internal image-reference" href="_images/FF_D.png"><img alt="_images/FF_D.png" src="_images/FF_D.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 46 </span><span class="caption-text">Latches y flip-flops D, (a) latch D, (b) flip-flop D disparado por flanco positivo, (c) latch controlado por señal negada y (d) flip-flop D disparado por flanco negativo (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-d" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 46 </span><span class="caption-text">Latches y flip-flops D, (a) latch D, (b) flip-flop D disparado por flanco positivo, (c) latch controlado por señal negada y (d) flip-flop D disparado por flanco negativo (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-d" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>La tabla de funcionamiento del flip-flop es la que se muestra en la <a class="reference internal" href="#tabla-ff-d"><span class="std std-numref">Tabla 16</span></a></p>
 <table class="table table-left" id="tabla-ff-d">
 <caption><span class="caption-number">Tabla 16 </span><span class="caption-text">Tabla de verdad del flip-flop D</span><a class="headerlink" href="#tabla-ff-d" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>D</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(Q(t+1)\)</span></p></th>
@@ -498,14 +503,12 @@ Q(t+1)=D(t)
 </pre></div>
 </div>
 <p>La salida de la simualción en Vivado es la siguiente:</p>
-<figure class="align-default" id="d-clk">
+<div class="figure align-default" id="d-clk">
 <a class="reference internal image-reference" href="_images/salida_D_clock.png"><img alt="_images/salida_D_clock.png" src="_images/salida_D_clock.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 47 </span><span class="caption-text">Simulación de la salida del flip-flop D en vivado.</span><a class="headerlink" href="#d-clk" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="flip-flop-jk">
+<p class="caption"><span class="caption-number">Figura 47 </span><span class="caption-text">Simulación de la salida del flip-flop D en vivado.</span><a class="headerlink" href="#d-clk" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+<div class="section" id="flip-flop-jk">
 <h2>Flip-flop JK<a class="headerlink" href="#flip-flop-jk" title="Permalink to this heading">#</a></h2>
 <p>El diagrama lógico estándar de un flip-flop JK se muestra en la <a class="reference internal" href="#ff-jk"><span class="std std-numref">Figura 48</span></a>,  cuya ecuación característica es la siguiente:</p>
 <div class="math notranslate nohighlight">
@@ -514,6 +517,12 @@ Q(t+1)=J(t)\overline{Q}(t)+\overline{K}Q(t)
 \]</div>
 <table class="table table-left" id="tabla-ff-jk">
 <caption><span class="caption-number">Tabla 17 </span><span class="caption-text">Tabla de verdad del flip-flop JK</span><a class="headerlink" href="#tabla-ff-jk" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(J\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(K\)</span></strong></p></th>
@@ -544,12 +553,10 @@ Q(t+1)=J(t)\overline{Q}(t)+\overline{K}Q(t)
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="ff-jk">
+<div class="figure align-default" id="ff-jk">
 <a class="reference internal image-reference" href="_images/flip_flops_JK.png"><img alt="_images/flip_flops_JK.png" src="_images/flip_flops_JK.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 48 </span><span class="caption-text">Flip-flops JK (a) disparado por flanco positivo (b) disparado por flanco negativo, (c) Construido a partir de un flip-flop D.</span><a class="headerlink" href="#ff-jk" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 48 </span><span class="caption-text">Flip-flops JK (a) disparado por flanco positivo (b) disparado por flanco negativo, (c) Construido a partir de un flip-flop D.</span><a class="headerlink" href="#ff-jk" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">----------------------------------------------------</span>
 <span class="c1">-- Descripción de un flip-flop JK</span>
 <span class="c1">---------------------------------------------------</span>
@@ -578,14 +585,12 @@ Q(t+1)=J(t)\overline{Q}(t)+\overline{K}Q(t)
 </pre></div>
 </div>
 <p>La salida de la simualción en Vivado es la siguiente:</p>
-<figure class="align-default" id="jk-clk">
+<div class="figure align-default" id="jk-clk">
 <a class="reference internal image-reference" href="_images/salida_ff_JK.png"><img alt="_images/salida_ff_JK.png" src="_images/salida_ff_JK.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 49 </span><span class="caption-text">Simulación de la salida del flip-flop JK en vivado.</span><a class="headerlink" href="#jk-clk" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="flip-flop-t">
+<p class="caption"><span class="caption-number">Figura 49 </span><span class="caption-text">Simulación de la salida del flip-flop JK en vivado.</span><a class="headerlink" href="#jk-clk" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+<div class="section" id="flip-flop-t">
 <h2>Flip-flop T<a class="headerlink" href="#flip-flop-t" title="Permalink to this heading">#</a></h2>
 <p>El diagrama lógico estándar de un flip-flop JK se muestra en la <a class="reference internal" href="#ff-t"><span class="std std-numref">Figura 50</span></a>,  cuya ecuación característica es la siguiente:</p>
 <div class="math notranslate nohighlight">
@@ -594,6 +599,11 @@ Q(t+1)=T(t)\oplus \overline{Q}(t)
 \]</div>
 <table class="table table-left" id="tabla-ff-t">
 <caption><span class="caption-number">Tabla 18 </span><span class="caption-text">Tabla de verdad del flip-flop T</span><a class="headerlink" href="#tabla-ff-t" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>T</p></th>
 <th class="head"><p><span class="math notranslate nohighlight">\(Q(t+1)\)</span></p></th>
@@ -611,12 +621,10 @@ Q(t+1)=T(t)\oplus \overline{Q}(t)
 </tr>
 </tbody>
 </table>
-<figure class="align-default" id="ff-t">
+<div class="figure align-default" id="ff-t">
 <a class="reference internal image-reference" href="_images/flip_flops_T.png"><img alt="_images/flip_flops_T.png" src="_images/flip_flops_T.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 50 </span><span class="caption-text">Flip-flops T, (a) flip-flop T disparado por flanco positivo, (b) flip-flop t disparado por flanco negativo (d) flip-flop T construido con un flip-flop D y lógica combinacional (<span id="id3">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-t" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 50 </span><span class="caption-text">Flip-flops T, (a) flip-flop T disparado por flanco positivo, (b) flip-flop t disparado por flanco negativo (d) flip-flop T construido con un flip-flop D y lógica combinacional (<span id="id3">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#ff-t" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">----------------------------------------------------</span>
 <span class="c1">-- Descripción de un flip-flop T</span>
 <span class="c1">---------------------------------------------------</span>
@@ -647,14 +655,12 @@ Q(t+1)=T(t)\oplus \overline{Q}(t)
 </pre></div>
 </div>
 <p>La salida de la simualción en Vivado es la siguiente:</p>
-<figure class="align-default" id="t-clk">
+<div class="figure align-default" id="t-clk">
 <a class="reference internal image-reference" href="_images/salida_ff_T.png"><img alt="_images/salida_ff_T.png" src="_images/salida_ff_T.png" style="height: 300px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 51 </span><span class="caption-text">Simulación de la salida del flip-flop T en vivado.</span><a class="headerlink" href="#t-clk" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
-</section>
-</section>
+<p class="caption"><span class="caption-number">Figura 51 </span><span class="caption-text">Simulación de la salida del flip-flop T en vivado.</span><a class="headerlink" href="#t-clk" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -697,11 +703,11 @@ Q(t+1)=T(t)\oplus \overline{Q}(t)
       </div>
     </a>
     <a class="right-next"
-       href="Bibliograf%C3%ADa.html"
+       href="analisis_secuenciales.html"
        title="siguiente página">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Bibliografía</p>
+        <p class="prev-next-title">Análisis de circuitos secuenciales</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
