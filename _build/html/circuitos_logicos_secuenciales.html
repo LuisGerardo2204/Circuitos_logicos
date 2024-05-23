@@ -7,7 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Circuitos lógicos secuenciales &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -341,43 +342,42 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="circuitos-logicos-secuenciales">
+  <section class="tex2jax_ignore mathjax_ignore" id="circuitos-logicos-secuenciales">
 <h1>Circuitos lógicos secuenciales<a class="headerlink" href="#circuitos-logicos-secuenciales" title="Permalink to this heading">#</a></h1>
 <p>En los temas anteriores hemos estudiado la lógica combinacional, la lógica combinacional permite la construcción de bloques complejos a través de estructuras básicas más simples para conseguir sistemas digitales para un propósito específico. En muchos sistemas digitales se hace necesario el almacenamiento de información. El contar con elementos que almacenan información permite realizar secuencias de operaciones más flexibles e incluso adaptables. A los circuitos que permiten almacenar información en forma de bits se les conoce como circuitos secuenciales.</p>
 <p>La estructura clásica de un circuito secuencial comprende la interconexión de un circuito combinacional con elementos de almacenamiento, el almacenamiento, es por supuesto de información de naturaleza binaria o de bits como se muestra en la <a class="reference internal" href="#cs1"><span class="std std-numref">Figura 27</span></a>. Un circuito lógico secuencial recibe información en forma de datos binarios  a través de las entradas. Estas entradas, junto con el estado actual de los elementos de almacenamiento, determinan el valor binario de la o las salidas.</p>
-<div class="figure align-default" id="cs1">
+<figure class="align-default" id="cs1">
 <a class="reference internal image-reference" href="_images/secuencial.png"><img alt="_images/secuencial.png" src="_images/secuencial.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 27 </span><span class="caption-text">Diagrama de bloques de un circuito lógico secuencial (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#cs1" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 27 </span><span class="caption-text">Diagrama de bloques de un circuito lógico secuencial (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#cs1" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Hay dos tipos principales de circuitos secuenciales o con capacidad de almacenamiento de información. Esta clasificación se realiza con base en el momento en el que se observan las entradas y los cambios en su estado interior. Una clasificación general es la siguiente:</p>
 <ul class="simple">
 <li><p><strong>Circuitos lógicos secuenciales síncronos:</strong> En estos sistemas digitales el comportamiento se define a partir del conocimiento de sus señales en instantes específicos o discretos de tiempo como se muestra en la <a class="reference internal" href="#cs2"><span class="std std-numref">Figura 28</span></a>.</p></li>
 <li><p><strong>Circuitos lógicos secuenciales asíncronos:</strong> En estos circuitos, el comportamiento final no depende solo de las entradas, sino también del orden en que estas cambian o evolucionan en el tiempo.</p></li>
 </ul>
 <p>Los elementos de almacenamiento empleados en los circuitos secuenciales con entrada de reloj se denominan <code class="docutils literal notranslate"><span class="pre">flip-flops</span></code>. Un flip-flop es un dispositivo de almacenamiento binario capaz de almacenar un bit de información y presenta un conjunto de parámetros que son del tipo temporal. Los flip-flops suelen recibir sus entradas directamente de un circuito combinacional y presentan una entrada de reloj, esta señal de reloj es generalmente un pulso de tipo cuadrado con</p>
-<div class="figure align-default" id="cs2">
+<figure class="align-default" id="cs2">
 <a class="reference internal image-reference" href="_images/secuencial_sincrono.png"><img alt="_images/secuencial_sincrono.png" src="_images/secuencial_sincrono.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 28 </span><span class="caption-text">Diagrama de bloques de un circuito secuencial síncrono (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#cs2" title="Enlace permanente a esta imagen">#</a></p>
-</div>
-<div class="section" id="latches">
+<figcaption>
+<p><span class="caption-number">Figura 28 </span><span class="caption-text">Diagrama de bloques de un circuito secuencial síncrono (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#cs2" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+<section id="latches">
 <h2>Latches<a class="headerlink" href="#latches" title="Permalink to this heading">#</a></h2>
 <p>El latch es el elemento básico de alamacenamiento, toda vez que permite realizar la operación básica de enclavamiento</p>
-<div class="figure align-default" id="latch">
+<figure class="align-default" id="latch">
 <a class="reference internal image-reference" href="_images/latch.png"><img alt="_images/latch.png" src="_images/latch.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 29 </span><span class="caption-text">Diagrama lógico de un latch RS.</span><a class="headerlink" href="#latch" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 29 </span><span class="caption-text">Diagrama lógico de un latch RS.</span><a class="headerlink" href="#latch" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>Tabla de verdad:</strong> Una tabla de verdad indica las combinaciones de las variables de entrada para las cuales la función de salida es igual a un «1» lógico, Por ejemplo:</p></li>
 </ul>
 <table class="table table-left" id="tabla-rs">
 <caption><span class="caption-number">Tabla 11 </span><span class="caption-text">Tabla de verdad del latch RS</span><a class="headerlink" href="#tabla-rs" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(S\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(R\)</span></strong></p></th>
@@ -445,10 +445,12 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simualción en Vivado es la siguiente:</p>
-<div class="figure align-default" id="srs">
+<figure class="align-default" id="srs">
 <a class="reference internal image-reference" href="_images/salida_RS.png"><img alt="_images/salida_RS.png" src="_images/salida_RS.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 30 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srs" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 30 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srs" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Una alternativa diferente para describir el mismo circuito lógico de almacenamiento se presenta abajo</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">--------------------------------</span>
 <span class="c1">-- Latch RS en VHDL, opción2</span>
@@ -473,27 +475,24 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simulación en Vivado se muestra en la siguiente figura:</p>
-<div class="figure align-default" id="srs2">
+<figure class="align-default" id="srs2">
 <a class="reference internal image-reference" href="_images/salida_RS_2.png"><img alt="_images/salida_RS_2.png" src="_images/salida_RS_2.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 31 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srs2" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 31 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srs2" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Una segunda configuración para la generación de un latch SR es usando compuertas NAND, en una configuración que se conoce com contraface. Su descripción difiere del latch RS construido con compuertas NOR en el hecho de que se expresa de forma inversa la entrada Set y la Reset como se muestra en la <a class="reference internal" href="#latch-nand"><span class="std std-numref">Figura 32</span></a>. El latch NAND, tambien se denomina <span class="math notranslate nohighlight">\(\overline{S}\overline{R}\)</span> porque exige una señal <span class="math notranslate nohighlight">\(0\)</span> para cambiar su estado. La barra sobre las letras indica el hecho de que las entradas deben estar complementadas para actuar sobre el estado del circuito.</p>
-<div class="figure align-default" id="latch-nand">
+<figure class="align-default" id="latch-nand">
 <a class="reference internal image-reference" href="_images/latch_NAND.png"><img alt="_images/latch_NAND.png" src="_images/latch_NAND.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 32 </span><span class="caption-text">Diagrama lógico de un latch RS con compuertas NAND.</span><a class="headerlink" href="#latch-nand" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 32 </span><span class="caption-text">Diagrama lógico de un latch RS con compuertas NAND.</span><a class="headerlink" href="#latch-nand" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p><strong>Tabla de verdad:</strong> Una tabla de verdad indica las combinaciones de las variables de entrada para las cuales la función de salida es igual a un «1» lógico, Por ejemplo:</p></li>
 </ul>
 <table class="table table-left" id="tabla-rs-nand">
 <caption><span class="caption-number">Tabla 12 </span><span class="caption-text">Tabla de verdad del latch SR con compuertas NAND</span><a class="headerlink" href="#tabla-rs-nand" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-<col style="width: 20%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(S\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(R\)</span></strong></p></th>
@@ -561,24 +560,22 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simulación en Vivado se muestra en la siguiente figura:</p>
-<div class="figure align-default" id="srsnand">
+<figure class="align-default" id="srsnand">
 <a class="reference internal image-reference" href="_images/salida_RS_nand.png"><img alt="_images/salida_RS_nand.png" src="_images/salida_RS_nand.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 33 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srsnand" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 33 </span><span class="caption-text">Simulación de la salida del Latch RS en vivado.</span><a class="headerlink" href="#srsnand" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>El funcionamiento de los latches básicos NOR y NAND puede modificarse añadiendo una entrada de control adicional que determina cuándo debe cambiar el estado del latch. En la <a class="reference internal" href="#latch-nand-c"><span class="std std-numref">Figura 34</span></a> se muestra un latch <span class="math notranslate nohighlight">\(SR\)</span> con una entrada de control consiste en un latch NAND básico y dos compuertas NAND adicionales. Como lo muestra el diagrama lógico, la entrada adicional <span class="math notranslate nohighlight">\(C\)</span> se comporta como una señal habilitadora para las entradas <span class="math notranslate nohighlight">\(R\)</span> y <span class="math notranslate nohighlight">\(S\)</span>.</p>
-<div class="figure align-default" id="latch-nand-c">
+<figure class="align-default" id="latch-nand-c">
 <a class="reference internal image-reference" href="_images/latch_NAND_c.png"><img alt="_images/latch_NAND_c.png" src="_images/latch_NAND_c.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 34 </span><span class="caption-text">Diagrama lógico de un latch RS con compuertas NAND y entrada de control</span><a class="headerlink" href="#latch-nand-c" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 34 </span><span class="caption-text">Diagrama lógico de un latch RS con compuertas NAND y entrada de control</span><a class="headerlink" href="#latch-nand-c" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Las salidas de las compuertas NAND permanecen en un nivel lógico <span class="math notranslate nohighlight">\(1\)</span> siempre que se cumpla que la entrada de control <span class="math notranslate nohighlight">\(C=1\)</span>. Esta es una condición que permite almacenar el dato. Cuando la entrada de control <span class="math notranslate nohighlight">\(C\)</span> se encuentra en un valor de <span class="math notranslate nohighlight">\(1\)</span> lógico, la información o el valor lógico de las entradas <span class="math notranslate nohighlight">\(S\)</span> y <span class="math notranslate nohighlight">\(R\)</span> afectan dorectamente al latch. El estado set, se alcanza cuando se cumplen las condiciones <span class="math notranslate nohighlight">\(S=1\)</span>, <span class="math notranslate nohighlight">\(R=0\)</span> y <span class="math notranslate nohighlight">\(C=1\)</span>. Para cambiar al estado reset, las condiciones o valores lógicos de las entradas deben ser tales que: <span class="math notranslate nohighlight">\(S=0\)</span>, <span class="math notranslate nohighlight">\(R=1\)</span> y <span class="math notranslate nohighlight">\(C=1\)</span>. En cualquier otro caso, cuando <span class="math notranslate nohighlight">\(C=0\)</span>, el circuito permanece eb su estado actual, por lo tanto, se entiende que la entrada de control <span class="math notranslate nohighlight">\(C\)</span> activa o desactiva al circuito. Finalmente, si <span class="math notranslate nohighlight">\(C=1\)</span> y las entradas <span class="math notranslate nohighlight">\(R\)</span> y <span class="math notranslate nohighlight">\(S\)</span> son iguales a cero lógico, el estado del circuito no cambia, como se muestra en la <a class="reference internal" href="#tabla-rs-c"><span class="std std-numref">Tabla 13</span></a>.</p>
 <table class="table table-left" id="tabla-rs-c">
 <caption><span class="caption-number">Tabla 13 </span><span class="caption-text">Tabla de verdad del latch SR con compuertas NAND y entrada de control</span><a class="headerlink" href="#tabla-rs-c" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(C\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(R\)</span></strong></p></th>
@@ -643,27 +640,26 @@ document.write(`
 </pre></div>
 </div>
 <p>La salida de la simulación en Vivado se muestra en la siguiente figura:</p>
-<div class="figure align-default" id="latch-rs-nand-c">
+<figure class="align-default" id="latch-rs-nand-c">
 <a class="reference internal image-reference" href="_images/salida_RS_nand_c.png"><img alt="_images/salida_RS_nand_c.png" src="_images/salida_RS_nand_c.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 35 </span><span class="caption-text">Simulación de un latch RS con compuertas NAND y entrada de control</span><a class="headerlink" href="#latch-rs-nand-c" title="Enlace permanente a esta imagen">#</a></p>
-</div>
-</div>
-<div class="section" id="latch-d">
+<figcaption>
+<p><span class="caption-number">Figura 35 </span><span class="caption-text">Simulación de un latch RS con compuertas NAND y entrada de control</span><a class="headerlink" href="#latch-rs-nand-c" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="latch-d">
 <h2>Latch D<a class="headerlink" href="#latch-d" title="Permalink to this heading">#</a></h2>
 <p>El latch D, es el más comun de los elementos de almacenamiento binario, dado su funcionamiento transparente. Una manera de eliminar el estado indefinido no deseable en el latch SR es asegurar que las entradas S y R nunca sean iguales a 1 al mismo tiempo. Esto se consigue con el latch D de la <a class="reference internal" href="#latch-nand-d"><span class="std std-numref">Figura 36</span></a>. Este latch sólo tiene dos entradas: <span class="math notranslate nohighlight">\(D\)</span> (dato) y <span class="math notranslate nohighlight">\(C\)</span> (control). Si la entrada de control es <span class="math notranslate nohighlight">\(0\)</span> lógico, el latch tiene ambas entradas a nivel <span class="math notranslate nohighlight">\(1\)</span> lógico, y el circuito no puede cambiar de estado, sin importar el valor de la entrada <span class="math notranslate nohighlight">\(D\)</span>.</p>
-<div class="figure align-default" id="latch-nand-d">
+<figure class="align-default" id="latch-nand-d">
 <a class="reference internal image-reference" href="_images/latch_NAND_D.png"><img alt="_images/latch_NAND_D.png" src="_images/latch_NAND_D.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 36 </span><span class="caption-text">Diagrama lógico de un latch D con compuertas NAND</span><a class="headerlink" href="#latch-nand-d" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 36 </span><span class="caption-text">Diagrama lógico de un latch D con compuertas NAND</span><a class="headerlink" href="#latch-nand-d" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>La tabla de verdad para el latch D se muestra en la <a class="reference internal" href="#tabla-latch-d"><span class="std std-numref">Tabla 14</span></a>. El latch D recibe su nombre de su capacidad para retener el dato en su interior. La información binaria presente en la entrada de datos del latch D se transfiere a la salida <span class="math notranslate nohighlight">\(Q\)</span> cuando se habilita con un <span class="math notranslate nohighlight">\(1\)</span> lógico la entrada de control. La salida sigue a los cambios en la entrada de datos, con tal de que la entrada de control esté habilitada. Cuando se deshabilita la entrada de control <span class="math notranslate nohighlight">\(0\)</span> lógico, la información
 binaria que estaba presente en la entrada de datos en el momento de la transición se retiene en la salida <span class="math notranslate nohighlight">\(Q\)</span> hasta que la entrada de control vuelva a habilitarse.</p>
 <table class="table table-left" id="tabla-latch-d">
 <caption><span class="caption-number">Tabla 14 </span><span class="caption-text">Tabla de verdad del latch SR con compuertas NAND y entrada de control</span><a class="headerlink" href="#tabla-latch-d" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><strong><span class="math notranslate nohighlight">\(C\)</span></strong></p></th>
 <th class="head"><p><strong><span class="math notranslate nohighlight">\(D\)</span></strong></p></th>
@@ -718,23 +714,27 @@ binaria que estaba presente en la entrada de datos en el momento de la transici�
 </pre></div>
 </div>
 <p>La salida de la simulación en Vivado se muestra en la siguiente figura:</p>
-<div class="figure align-default" id="salida-latch-d">
+<figure class="align-default" id="salida-latch-d">
 <a class="reference internal image-reference" href="_images/salida_D.png"><img alt="_images/salida_D.png" src="_images/salida_D.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 37 </span><span class="caption-text">Simulación de un latch D con compuertas NAND y entrada de control</span><a class="headerlink" href="#salida-latch-d" title="Enlace permanente a esta imagen">#</a></p>
-</div>
-</div>
-<div class="section" id="flip-flops">
+<figcaption>
+<p><span class="caption-number">Figura 37 </span><span class="caption-text">Simulación de un latch D con compuertas NAND y entrada de control</span><a class="headerlink" href="#salida-latch-d" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="flip-flops">
 <h2>Flip-flops<a class="headerlink" href="#flip-flops" title="Permalink to this heading">#</a></h2>
 <p>El estado de un latch en un flip-flop puede cambiar cuando hay un cambio, aun  momentáneo en el  valor de la entrada de control. Este cambio se denomina disparp El latch D con pulsos de reloj en su entrada de control se dispara cada vez que aparece un pulso con valor <span class="math notranslate nohighlight">\(1\)</span> lógico. Mientras que el pulso permanezca en el nivel activo <span class="math notranslate nohighlight">\(1\)</span>, cualquier cambio en la entrada de datos cambiará el estado del latch. En este sentido, como ya se mencionó, el latch es transparente, ya que su valor de entrada puede verse directamente en la salida. Cuando los latches se emplean como elementos de almacenamiento aparece uninconveniente de consideracióna. Las transiciones de estado de los latches empiezan en cuanto  el pulso de reloj cambia al nivel <span class="math notranslate nohighlight">\(1\)</span>  lógco.  Un nuevo estado aparece en la salida del latch mientras el pulso todavía esté activo. Esta salida está conectada a las entradas de algunos otros latches mediante un circuito combinacional. Si las entradas aplicadas a los latches cambian mientras el pulso de reloj todavía esten en un valor <span class="math notranslate nohighlight">\(1\)</span> lógico los latches responderán a los nuevos valores de estado de los otros latches en lugar de a los valores de estado originales, y aparecerán una sucesión de cambios de estado en lugar de uno solo. El resultado es una situación no determinínstica o impredecible.</p>
 <p>Para resolver este problema, los latches suelen combinarse para formar un flip-flop. Una manera es combinar dos latches de manera tal que las entradas se presenten al flip-flop cuando haya un pulso de reloj en su estado de control y la otra manera es forzando a que el estado del flip-flop cambie solo en ausencia del pulso de reloj. Un circuito lógico de esta naturaleza se conoce como flip-flip maestro-esclavo. Una alternativa más para crear un flip-flop es diseñarlo de tal manera que solo se dispare durante una transición o cambio de <span class="math notranslate nohighlight">\(0\)</span> a <span class="math notranslate nohighlight">\(1\)</span> o de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(0\)</span> lógico. A esta configuración se le conoce como flip-flop disparado por flanco.</p>
-</div>
-<div class="section" id="flip-flop-maestro-esclavo">
+</section>
+<section id="flip-flop-maestro-esclavo">
 <h2>Flip-flop maestro-esclavo<a class="headerlink" href="#flip-flop-maestro-esclavo" title="Permalink to this heading">#</a></h2>
 <p>En la <a class="reference internal" href="#ff-maestro-esclavo"><span class="std std-numref">Figura 38</span></a> se muestra un flip-flop SR maestro-esclavo formado por dos latches y un inversor.</p>
-<div class="figure align-default" id="ff-maestro-esclavo">
+<figure class="align-default" id="ff-maestro-esclavo">
 <a class="reference internal image-reference" href="_images/ff_maestro_esclavo.png"><img alt="_images/ff_maestro_esclavo.png" src="_images/ff_maestro_esclavo.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 38 </span><span class="caption-text">Flip-fliop maestro-esclavo con latches SR</span><a class="headerlink" href="#ff-maestro-esclavo" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 38 </span><span class="caption-text">Flip-fliop maestro-esclavo con latches SR</span><a class="headerlink" href="#ff-maestro-esclavo" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>El código VHDL del latch RS en su configuración maestro-esclavo se muestra abajo:</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">-------------------------------------------</span>
 <span class="c1">-- Latch RS maestro-esclavo</span>
@@ -802,15 +802,19 @@ binaria que estaba presente en la entrada de datos en el momento de la transici�
 </pre></div>
 </div>
 <p>El circuito lógico sintetizado es el siguiente:</p>
-<div class="figure align-default" id="ff-rs-sintesis">
+<figure class="align-default" id="ff-rs-sintesis">
 <a class="reference internal image-reference" href="_images/ff_RS_sintesis.png"><img alt="_images/ff_RS_sintesis.png" src="_images/ff_RS_sintesis.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 39 </span><span class="caption-text">Sintesis en vivado de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#ff-rs-sintesis" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 39 </span><span class="caption-text">Sintesis en vivado de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#ff-rs-sintesis" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Es posible observar que en el bloque se encuentra incluido un latch RS a nivel compuerta:</p>
-<div class="figure align-default" id="ff-rs-sintesis-detalle">
+<figure class="align-default" id="ff-rs-sintesis-detalle">
 <a class="reference internal image-reference" href="_images/ff_RS_sintesis_detalle.png"><img alt="_images/ff_RS_sintesis_detalle.png" src="_images/ff_RS_sintesis_detalle.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 40 </span><span class="caption-text">Sintesis en vivado de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#ff-rs-sintesis-detalle" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 40 </span><span class="caption-text">Sintesis en vivado de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#ff-rs-sintesis-detalle" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>El test bench para el flip-flop maestro-esclavo es el siguiente:</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">------------------------------------------------</span>
 <span class="c1">-- Testbench o archivo banco de pruebas </span>
@@ -904,26 +908,32 @@ binaria que estaba presente en la entrada de datos en el momento de la transici�
 </pre></div>
 </div>
 <p>La salida de la simulación en Vivado se muestra en la siguiente figura:</p>
-<div class="figure align-default" id="salida-ff-rs">
+<figure class="align-default" id="salida-ff-rs">
 <a class="reference internal image-reference" href="_images/salida_ff_RS.png"><img alt="_images/salida_ff_RS.png" src="_images/salida_ff_RS.png" style="height: 300px;" /></a>
-<p class="caption"><span class="caption-number">Figura 41 </span><span class="caption-text">Simulación de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#salida-ff-rs" title="Enlace permanente a esta imagen">#</a></p>
-</div>
-</div>
-<div class="section" id="flip-flops-disparados-por-flancos">
+<figcaption>
+<p><span class="caption-number">Figura 41 </span><span class="caption-text">Simulación de un flip-flop RS maestro-esclavo</span><a class="headerlink" href="#salida-ff-rs" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="flip-flops-disparados-por-flancos">
 <h2>Flip-flops disparados por flancos<a class="headerlink" href="#flip-flops-disparados-por-flancos" title="Permalink to this heading">#</a></h2>
 <p>Un flip-flop disparado por flanco es un circuito lógico secuencial que ignora a la señal de reloj mientras está en un nivel constante y sólo realiza un cambioa durante una transición de la señal de reloj, este cambio se conoce tambien como un disparo del flip-flop.</p>
 <p>Un flip-flop D maestro-esclavo puede construirse a partir de un flip-flop SR maestro-esclavo al reemplasar al latch RS de la entrada por un latch D como los estudiados anteriormente, como se muestra en la <a class="reference internal" href="#ff-d-negativo"><span class="std std-numref">Figura 42</span></a>, este elemento secuencial se activa cuando la señal de reloj trancisiona de <span class="math notranslate nohighlight">\(1\)</span> a <span class="math notranslate nohighlight">\(0\)</span> lógico, lo que se conoce como un flanco de bajada de señal o flanco negativo.</p>
-<div class="figure align-default" id="ff-d-negativo">
+<figure class="align-default" id="ff-d-negativo">
 <a class="reference internal image-reference" href="_images/ff_maestro_esclavo_D.png"><img alt="_images/ff_maestro_esclavo_D.png" src="_images/ff_maestro_esclavo_D.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 42 </span><span class="caption-text">Flip-flop disparado por flanco negativo</span><a class="headerlink" href="#ff-d-negativo" title="Enlace permanente a esta imagen">#</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 42 </span><span class="caption-text">Flip-flop disparado por flanco negativo</span><a class="headerlink" href="#ff-d-negativo" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
 <p>Un flip-flop disparado o activado por flanco positivo, es decir, cuando la señal de reloj <span class="math notranslate nohighlight">\(C\)</span> transiciona de <span class="math notranslate nohighlight">\(0\)</span> a <span class="math notranslate nohighlight">\(1\)</span> lógico se obtiene con la modificaión al circuito mostrado en la  <a class="reference internal" href="#ff-d-negativo"><span class="std std-numref">Figura 42</span></a> para obtener el diagrama lógico mostrado en la <a class="reference internal" href="#ff-d-positivo"><span class="std std-numref">Figura 43</span></a>.</p>
-<div class="figure align-default" id="ff-d-positivo">
+<figure class="align-default" id="ff-d-positivo">
 <a class="reference internal image-reference" href="_images/ff_maestro_esclavo_D_positivo.png"><img alt="_images/ff_maestro_esclavo_D_positivo.png" src="_images/ff_maestro_esclavo_D_positivo.png" style="height: 200px;" /></a>
-<p class="caption"><span class="caption-number">Figura 43 </span><span class="caption-text">Flip-flop disparado por flanco positivo</span><a class="headerlink" href="#ff-d-positivo" title="Enlace permanente a esta imagen">#</a></p>
-</div>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Figura 43 </span><span class="caption-text">Flip-flop disparado por flanco positivo</span><a class="headerlink" href="#ff-d-positivo" title="Enlace permanente a esta imagen">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
