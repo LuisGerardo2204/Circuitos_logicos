@@ -7,7 +7,8 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Tipos de datos en VHDL &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -339,7 +340,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="tipos-de-datos-en-vhdl">
+  <section class="tex2jax_ignore mathjax_ignore" id="tipos-de-datos-en-vhdl">
 <h1>Tipos de datos en VHDL<a class="headerlink" href="#tipos-de-datos-en-vhdl" title="Permalink to this heading">#</a></h1>
 <p>Una parte muy importante del lenguaje de descripción VHDL es el uso de datos y objetos. A un objeto de datos se le pueden asignar valores que son denominados “datos”. La naturaleza y finalidad de cada objeto de datos es muy importante en VHDL y se le debe asignar un «tipo» específico. Ejemplos de Los objetos de datos son señales, variables y constantes. Las señales son como cables en un circuito de hardware que pueden tener un valor de 1 o 0 conectado a ellos. Sin embargo, a diferencia de los cables en un circuito, el valor de una señal será “recordado” hasta que se actualice explícitamente. Una señal a la que se le ha asignado un valor permanecerá en ese valor a menos que se le asigne un valor diferente. El operador utilizado para asignar un valor a una variable o señal en VHDL es <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>.</p>
 <p>Las variables en VHDL son similares a las variables de cualquier otro lenguaje de programación
@@ -348,12 +349,6 @@ un proceso. El operador utilizado para asignar un valor a una variable es <code 
 cuatro LEDs que se declaran como salidas <code class="docutils literal notranslate"><span class="pre">BIT_VECTOR</span></code>. Observe en la <a class="reference internal" href="#tabla3"><span class="std std-numref">Tabla 3</span></a>, en Valores posibles, los objetos de datos <code class="docutils literal notranslate"><span class="pre">BIT</span></code> y <code class="docutils literal notranslate"><span class="pre">STD_LOGIC</span></code> individuales (por ejemplo, señales, variables, entradas y salidas) se designan entre comillas simples, mientras que los valores asignados a los tipos <code class="docutils literal notranslate"><span class="pre">BIT_VECTOR</span></code> y <code class="docutils literal notranslate"><span class="pre">STD_LOGIC_VECTOR</span></code> son cadenas de valores de bits válidos entre comillas dobles.</p>
 <table class="table table-left" id="tabla3">
 <caption><span class="caption-number">Tabla 3 </span><span class="caption-text">Tipos de datos en VHDL</span><a class="headerlink" href="#tabla3" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Tipo de dato</p></th>
 <th class="head"><p>Declaración</p></th>
@@ -369,7 +364,7 @@ cuatro LEDs que se declaran como salidas <code class="docutils literal notransla
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">STD_LOGIC</span></code></p></td>
 <td><p>driver: STD_LOGIC</p></td>
-<td><p>“0” “1” “z” “x” “-“</p></td>
+<td><p>“0” “1” “z” “x” “-”</p></td>
 <td><p>driver &lt;=”1”</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">BIT_VECTOR</span></code></p></td>
@@ -393,10 +388,6 @@ cuatro LEDs que se declaran como salidas <code class="docutils literal notransla
 que es una expansión del <code class="docutils literal notranslate"><span class="pre">BIT_VECTOR</span></code>.  Los valores posibles para un tipo <code class="docutils literal notranslate"><span class="pre">STD_LOGIC</span></code> o para cualquier elemento en un <code class="docutils literal notranslate"><span class="pre">STD_LOGIC_VECTOR</span></code> se dan en la <a class="reference internal" href="#tabla4"><span class="std std-numref">Tabla 4</span></a>. Por ahora, mostraremos ejemplos usando valores de solo “1” y “0” lógicos.</p>
 <table class="table table-left" id="tabla4">
 <caption><span class="caption-number">Tabla 4 </span><span class="caption-text">Tipos de valores STD</span><a class="headerlink" href="#tabla4" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <tbody>
 <tr class="row-odd"><td><p>“1”</p></td>
 <td><p><strong>1</strong> lógico</p></td>
@@ -407,7 +398,7 @@ que es una expansión del <code class="docutils literal notranslate"><span class
 <tr class="row-odd"><td><p>“z”</p></td>
 <td><p>Alta impedancia</p></td>
 </tr>
-<tr class="row-even"><td><p>“-“</p></td>
+<tr class="row-even"><td><p>“-”</p></td>
 <td><p>Indiferente (don’t care);</p></td>
 </tr>
 <tr class="row-odd"><td><p>“U”</p></td>
@@ -427,8 +418,8 @@ que es una expansión del <code class="docutils literal notranslate"><span class
 </tr>
 </tbody>
 </table>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="representacion-de-tablas-de-verdad-en-vhdl">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="representacion-de-tablas-de-verdad-en-vhdl">
 <h1>Representación de tablas de verdad en VHDL<a class="headerlink" href="#representacion-de-tablas-de-verdad-en-vhdl" title="Permalink to this heading">#</a></h1>
 <p>Como primer ejemplo, reperesentaremos una tabla de verdad para una función <span class="math notranslate nohighlight">\(F(X,Y,Z)\)</span>. Una tabla de verdad permite al diseñador especificar el funcionamiento del circuito, como se menciona en la introducción. Usaremos la tabla de verdad especificada en La <a class="reference internal" href="circuitos_logicos_VHDL.html#tabla1"><span class="std std-numref">Tabla 1</span></a>. El punto principal
 de este ejemplo es dar una introducción a VHDL. Las entradas se definen en la declaración <code class="docutils literal notranslate"><span class="pre">ENTITY</span></code> como tres entradas independientes  <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> y <span class="math notranslate nohighlight">\(Z\)</span>. Si se elabora una tabla de verdad, primero se decide que bit colocar a la derecha (LSB) y cuál colocar a la izquierda (MSB). El operador de concatenación es
@@ -466,7 +457,7 @@ de este ejemplo es dar una introducción a VHDL. Las entradas se definen en la d
 <video controls autoplay muted="true" loop="true" width="600">
     <source src="./_static/videos/video1.mp4 " type="video/mp4">
 </video>
-</div></div>
+</div></section>
 
     <script type="text/x-thebe-config">
     {

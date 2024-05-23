@@ -15,14 +15,19 @@ kernelspec:
 
 # Análisis de circuitos secuenciales
 
-Los diferentes tipo de latches y flip-flops tienen asignada una simbología estándar para una fácil incluisón en diagrámas lógicos de alta complejidad, en los que sería imposible incluir su especificación a nivel de compuertas lógicas. 
+Las ecuaciones booleanas de entrada a los flip-flops son una expresión muy conveniente para especificar el diagrama lógico de un circuito secuencial. Es usual el determinar las entradas usando el nombre del tipo de flip flop que se utiliza en el circuito secuencial, estas expressiones también especifican de forma total el circuito combinacional que maneja a los elementos de memoria o flip-flops. En las ecuaciones booleanas de entrada no se especifica la entrada de reloj o $CLK$, pero se entiende que es necesaria al ser parte de un circuito secuencial ({cite:t}`Mano2005`). Por ejemplo, para el circuito secuencial que se muestra en la figura {numref}`logico_secuencial` las ecuaciones de entrada son las siguientes:
 
 
 $$
-Q(t+1)=S(t)+\overline{R}(t)Q(t)
+\begin{eqnarray}
+D_A=AX+BX\\
+D_B=\overline{A}X\\
+Y=(A+B)\overline{X}
+\end{eqnarray}
 $$
 
-donde $Q(t+1)$ es el estado siguiente, $Q(t)$ es el estado actual y las entradas $S(t)$ y $R(t)$ son las entradas Set y Reset respectivamente. 
+
+Las entradas $D_A$ y $D_B$ son las ecuaciones de entrada a dos flip-flops diferentes. Por otra parte, las salidas de los flip-flops son denotadas por las literales $A$ y $B$. Estas dos salidas constituyen el estado del circuito secuencial.
 
 ```{figure} /images/secuencial_1.png
 :height: 400px
@@ -99,7 +104,7 @@ end arq;
 
 
 ````
-
+La {numref}`tabla_secuencial_1` constituye la tabla de estados del ciurcuito lógico secuencial mostrado en la la figura {numref}`logico_secuencial`. La única entrada a este circuito secuencial es $X$, para cada posible combinación de la entrada los estados aparecen repetidos, además, considerese que el estado futuro en la tabla refleja el valor lógico de las salidas $A$ y $B$ $\textcolor{blue}{después~de~un~periodo~de~reloj}$. Cuando se obtiene una tabla de estados, se deben enumerar todas las posibles combinaciones binarias de estados actuales y entradas. En el caso de la {numref}`tabla_secuencial_1` se tienen ocho combinaciones de entrada por que se tienen dos bits de estado $A$ y $B$, además de la entrada $X$.
 
 ```{list-table} Tabla de verdad del latch RS
 :header-rows: 1
@@ -187,4 +192,4 @@ end arq;
   - 0
   - 0  
 ```
-
+La tabla de estado de un circuito secuencial con $m$ flip-flops y $n$ entradas requiere $2^{m+n}$ filas para ser descrita. Para construir la tabla de estado, se enlistan con los números binarios desde $0$ hasta $2^{m+n}-1$ combinando columnas de entrada y de estado actual.
