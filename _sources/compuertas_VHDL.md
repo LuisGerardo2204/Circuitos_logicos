@@ -66,7 +66,7 @@ El objetivo de esta práctica es aprender a utilizar las compuertas lógicas bá
 ```
 En la figura {numref}`compuertas` se muestra el circuito lógico para la prueba de múltiples compuertas lógicas. el código en VHDL para simular su comportamiento se muestra abajo.
 
-# Formato en el lenguage VHDL y sintaxis
+## Formato en el lenguage VHDL y sintaxis
 
 Como cualquier lenguage computacional, VHDL tiene propiedades únicas similares a los lenguajes de programación comunes como C#, Java, Python. De la misma manera en la que se estudia gramática cuando se aprende un lenguaje nuevo, un lenguaje que está destinado para se utilizado en una computadora, requiere reglas específicas de sintaxis. La descripción de circuitos lógicos en su forma básica, involucra los siguientes elementos básicos: 
 
@@ -157,7 +157,7 @@ La salida de la simulación en el software vivado que se aprecia en la {numref}`
 Simulación en vivado del código VHDL.
 ```
 
-# Práctica de compuertas en VHDL
+## Práctica de compuertas en VHDL
 
 La sintaxis de las compuertas básicas en VHDL se presenta en la siguiente práctica. Considere el circuito lógico de la {numref}`compuertas`, el circuito no cumple ninguna función en particular, simplemente agrupa en el arreglo de bits **F** la salida de las operaciones lógicas básicas aplicadas a las entradas **X** y **Y**. Para generar las combinaciones de las entradas y producir la simulación de una tabla de verdad, se utiliza la instrucción ``Force Clock`` en el software vivado. Al bit más significativo se le asigna el periodo más grande. El periodo asignado al bit más significativo se divide a la mitad según se asigna un reloj para emular la tabla de verdad hasta llegar al bit o señal de entrada menos significativo como se muestra en la {numref}`relojes`.
 

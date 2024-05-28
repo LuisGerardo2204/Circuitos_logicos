@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resta binaria con signo &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+    <title>Diseño de circuitos secuenciales. &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
   
@@ -66,11 +66,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'resta_con_signo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diseño_secuenciales';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Circuitos lógicos secuenciales" href="circuitos_logicos_secuenciales.html" />
-    <link rel="prev" title="Código VHDL para un multiplicador binario de cuatro bits." href="Codigo_multiplicador.html" />
+    <link rel="next" title="Descripcion en VHLD usando estados" href="desc_estados.html" />
+    <link rel="prev" title="Análisis de circuitos secuenciales" href="analisis_secuenciales.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
   </head>
@@ -166,18 +166,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="compuertas_VHDL.html">Compuertas Lógicas en VHDL</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="estructuras_control_VHDL.html">Estructuras de control de flujo o de desición en VHDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
 <li class="toctree-l1"><a class="reference internal" href="resta_binaria.html">Resta binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="multiplicacion_binaria.html">Multiplicación binaria</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Resta binaria con signo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flip_flops.html">Flip-flops con símbolos gráficos estándar</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analisis_secuenciales.html">Análisis de circuitos secuenciales</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diseno_secuenciales.html">Diseño de circuitos secuenciales.</a></li>
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diseño de circuitos secuenciales.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desc_estados.html">Descripcion en VHLD usando estados</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -233,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/resta_con_signo.md" target="_blank"
+      <li><a href="_sources/diseño_secuenciales.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Descargar archivo fuente"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -302,7 +304,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -313,11 +317,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Resta binaria con signo</h1>
+    <h1>Diseño de circuitos secuenciales.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-principales-de-diseno">Pasos principales de diseño.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-estados">Diagramas de estados.</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -327,153 +340,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="resta-binaria-con-signo">
-<h1>Resta binaria con signo<a class="headerlink" href="#resta-binaria-con-signo" title="Permalink to this heading">#</a></h1>
-<p>La suma de dos números, <span class="math notranslate nohighlight">\(X+Y\)</span>, en el sistema de signo y magnitud sigue las reglas de la aritmética ordinaria: Si los dos signos son iguales, sumamos las magnitudes y se otorga el signo de <span class="math notranslate nohighlight">\(X\)</span> a la suma. Si los signos son diferentes, se resta la magnitud de <span class="math notranslate nohighlight">\(Y\)</span> a la magnitud de <span class="math notranslate nohighlight">\(X\)</span> (<span id="id1">Tocci <em>et al.</em> [<a class="reference internal" href="Bibliograf%C3%ADa.html#id2" title="Ronald J. Tocci, Neal S. Widmer, and Gregory L. Moss. Digital systems: principles and applications. Pearson education, New Jersey, U.S.A., twelfth edition, 2017. ISBN 9780134220130.">TWM17</a>]</span>). La presencia o asusencia de acarreo final determina el signo del resultado, con base en el signo del número <span class="math notranslate nohighlight">\(X\)</span> y se decide si se corrige usando del complemento a
-dos. Por ejemplo, los números con signo <span class="math notranslate nohighlight">\(X=(0~0011001)\)</span> y <span class="math notranslate nohighlight">\(Y=(1~0100101)\)</span>, la suma se expresa como la resta expresada como <span class="math notranslate nohighlight">\(Z=X+Y=X-Y\)</span>, debido a que <span class="math notranslate nohighlight">\(Y\)</span> tiene signo negativo:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{eqnarray}
-  &amp;0011001\\
- +&amp;1011011\\
-&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-Z=&amp;1110100
-\end{eqnarray}
-\end{split}\]</div>
-<p>Se observa que el resultado es <span class="math notranslate nohighlight">\(1110100\)</span>, y se ha producido un acarreo de <span class="math notranslate nohighlight">\(1\)</span>. El acarreo final indica que la magnitud de <span class="math notranslate nohighlight">\(X\)</span> es menor que la magnitud de <span class="math notranslate nohighlight">\(Y\)</span>. Entonces, el signo del resultado es opuesto al de <span class="math notranslate nohighlight">\(X\)</span> y es, por consiguiente, un signo de (-). El acarreo final también indica que la magnitud del resultado, <span class="math notranslate nohighlight">\(1110100\)</span>, se debe corregir tomando su complemento a 2. Combinando
-el signo y la magnitud corregida del resultado, se obtiene <span class="math notranslate nohighlight">\(1~0001100\)</span>. La regla para sumar números en signo y complemento no requiere ni comparación ni resta, sino sólo suma. El procedimiento es simple y puede exponerse como sigue para los números binarios:</p>
-<p>Algunos ejemplos de suma binaria con signo son los siguientes:</p>
-<div class="math notranslate nohighlight" id="equation-ejemplo-1">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ejemplo-1" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- +6~~~~~&amp;00000110\\
- +13~~+ &amp;00001101\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-19~~~~&amp;00010011
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-2">
-<span class="eqno">(3)<a class="headerlink" href="#equation-ejemplo-2" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- -6~~~~~&amp;11111010\\
- +13~~+ &amp;00001101\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
-+7~~~&amp;00000111
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-3">
-<span class="eqno">(4)<a class="headerlink" href="#equation-ejemplo-3" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- +6~~~~~&amp;00000110\\
- -13~~+ &amp;11110011\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
--7~~~&amp;11111001
-\end{eqnarray}\end{split}\]</div>
-<div class="math notranslate nohighlight" id="equation-ejemplo-4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-ejemplo-4" title="Enlace permanente a esta ecuación">#</a></span>\[\begin{split}\begin{eqnarray}
- -6~~~~~&amp;11111010\\
- -13~~+ &amp;11110011\\
-\overline{~~~~~}~~~~&amp;\overline{~~~~~~~~~~~~~~~~~}\\
--19~~~&amp;11101101
-\end{eqnarray}\end{split}\]</div>
-<table class="table table-left" id="tabla-signos">
-<caption><span class="caption-number">Tabla 10 </span><span class="caption-text">Números binarios con signo</span><a class="headerlink" href="#tabla-signos" title="Enlace permanente a esta tabla">#</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Decimal</p></th>
-<th class="head"><p>Signo y complemento a 2</p></th>
-<th class="head"><p>Signo y complemento a 1</p></th>
-<th class="head"><p>Signo y magnitud</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>+7</p></td>
-<td><p>0111</p></td>
-<td><p>0111</p></td>
-<td><p>0111</p></td>
-</tr>
-<tr class="row-odd"><td><p>+6</p></td>
-<td><p>0110</p></td>
-<td><p>0110</p></td>
-<td><p>0110</p></td>
-</tr>
-<tr class="row-even"><td><p>+5</p></td>
-<td><p>0101</p></td>
-<td><p>0101</p></td>
-<td><p>0101</p></td>
-</tr>
-<tr class="row-odd"><td><p>+4</p></td>
-<td><p>0100</p></td>
-<td><p>0100</p></td>
-<td><p>0100</p></td>
-</tr>
-<tr class="row-even"><td><p>+3</p></td>
-<td><p>0011</p></td>
-<td><p>0011</p></td>
-<td><p>0011</p></td>
-</tr>
-<tr class="row-odd"><td><p>+2</p></td>
-<td><p>0010</p></td>
-<td><p>0010</p></td>
-<td><p>0010</p></td>
-</tr>
-<tr class="row-even"><td><p>+1</p></td>
-<td><p>0001</p></td>
-<td><p>0001</p></td>
-<td><p>0001</p></td>
-</tr>
-<tr class="row-odd"><td><p>+0</p></td>
-<td><p>0000</p></td>
-<td><p>0000</p></td>
-<td><p>0000</p></td>
-</tr>
-<tr class="row-even"><td><p>-0</p></td>
-<td><p>«##»</p></td>
-<td><p>1111</p></td>
-<td><p>1000</p></td>
-</tr>
-<tr class="row-odd"><td><p>-1</p></td>
-<td><p>1111</p></td>
-<td><p>1110</p></td>
-<td><p>1001</p></td>
-</tr>
-<tr class="row-even"><td><p>-2</p></td>
-<td><p>1110</p></td>
-<td><p>1101</p></td>
-<td><p>1010</p></td>
-</tr>
-<tr class="row-odd"><td><p>-3</p></td>
-<td><p>1101</p></td>
-<td><p>1100</p></td>
-<td><p>1011</p></td>
-</tr>
-<tr class="row-even"><td><p>-4</p></td>
-<td><p>1100</p></td>
-<td><p>1011</p></td>
-<td><p>1100</p></td>
-</tr>
-<tr class="row-odd"><td><p>-5</p></td>
-<td><p>1011</p></td>
-<td><p>1010</p></td>
-<td><p>1101</p></td>
-</tr>
-<tr class="row-even"><td><p>-6</p></td>
-<td><p>1010</p></td>
-<td><p>1001</p></td>
-<td><p>1110</p></td>
-</tr>
-<tr class="row-odd"><td><p>-7</p></td>
-<td><p>1001</p></td>
-<td><p>1000</p></td>
-<td><p>1111</p></td>
-</tr>
-<tr class="row-even"><td><p>-8</p></td>
-<td><p>1000</p></td>
-<td><p>«##»</p></td>
-<td><p>«##»</p></td>
-</tr>
-</tbody>
-</table>
+  <div class="tex2jax_ignore mathjax_ignore section" id="diseno-de-circuitos-secuenciales">
+<h1>Diseño de circuitos secuenciales.<a class="headerlink" href="#diseno-de-circuitos-secuenciales" title="Permalink to this heading">#</a></h1>
+<p>El diseño de los circuotos lógicos secuenciales que son del tipo síncrono. es decir que cuenten con una entrada de reloj, se inicia regualrmente con un conjunto de especificiaciones que son del tipo verbal, abstracta o incluso de un conjunto de expresiones booleanas que a menudo surgen de un diagrama lógico incluso. A diferencia de la especificiación de un circuito combiancional que se especifica completamente por medio de una tabla de verdad, para un circuito secuencial se hace necesaria una tabla de estados como la especificada en la <a class="reference internal" href="analisis_secuenciales.html#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a>.</p>
+<p>Un circuito secuencial se construye a partir de flip-flops y de una parte combinacional a partir de compuertas lógicas. Una parte importante del diseño consiste en elegir los flip-flips adecuados y encontrar las expresiones booleanas que en conjunto con la parte secuencial cumpla las especificaciones dadas. El número mínimo de flip-flops es determinado completamente por los estados del circuito; si se tienen <span class="math notranslate nohighlight">\(n\)</span> flip-flops pueden representar <span class="math notranslate nohighlight">\(2^n\)</span> estados binarios. Finalmente, se puede expresar que el porceso de diseño de un circuito secuencial se convierte en un problema de diseño de circuitos combinacionales, en el que pueden aplicarse las técnicas de diseño como el mapa de Karnauhg (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</p>
+<div class="section" id="pasos-principales-de-diseno">
+<h2>Pasos principales de diseño.<a class="headerlink" href="#pasos-principales-de-diseno" title="Permalink to this heading">#</a></h2>
+<p>El diseño de circuitos secuenciales es muy similar al de los circuitos combinacionales, sim embargo se pueden aplicar algunas reglas similares para el diseño de los circuitod lógicos secuenciales, ya sean síncronos o asíncronos. Los siguientes pasos son generales mas no únicos para el diseño de circuitos combinacionales, como se desctibe en (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>Especificacion de diseño:</strong> se describe el desempeño o comportamiento deseado para el circuito o sistema digital.</p></li>
+<li><p><strong>Formulación del desempeño deseado:</strong> se obtiene o plantea un diagrama de estados o una tabla de estados a partir de las especificaciones de diseño.</p></li>
+<li><p><strong>Se asignan los estados:</strong> si es viable la costrucción de un diagrama de estados se asignan los códigos binarios a los estados de la tabla, entendidos como la combinación de las salidas de los flip-flops.</p></li>
+<li><p><strong>De determinan las expresiones booleanas de entrada:</strong> se seleccionan los flip-flops a partir de la tabla de estados, la tabla de estados puede ser una herramienta importante de selección del tipo de flip-flop en función de las expresiones de entrada que se encuentran íntimamente relacionadas o codificadas en los estados futuros.</p></li>
+<li><p><strong>Determinación de la ecuación de salida:</strong> se establecen las euaciones de salida a partir de las salidas que se establecen en las especificaciones de salida o salidas en la tabla de estados.</p></li>
+<li><p><strong>Optimización:</strong> se minimizan las expresiones de entrada y salida de los flip-flops usando herramientas como el mapa de Karnaugh.</p></li>
+<li><p><strong>Especificación del diagrama lógico</strong> se especifica el diagrama lógico del circuito secuencial usando los símbolos estándar para los flip-flops y las compuertas para las expresiones booleanas.</p></li>
+<li><p><strong>Simulación:</strong> por medio de la simulación se verifica el comportamiento del circuito lógico. La simualción se realiza utilizando las herramientas pertinentes, un simulador gráfico o un software de desarrollo como vivado.</p></li>
+</ol>
+<p>El principio para formular las tablas y diagramas de estados es la comprensión intuitiva del concepto de estado. Un estado es un recordatorio de las combinaciones de entrada que se han aplicado al circuito en cualquier flanco positivo del reloj.</p>
+</div>
+<div class="section" id="diagramas-de-estados">
+<h2>Diagramas de estados.<a class="headerlink" href="#diagramas-de-estados" title="Permalink to this heading">#</a></h2>
+<p>La información disponible en una tabla de estados se puede representar gráficamente en forma de diagrama de estados. En este tipo de diagrama, un estado se representa por un círculo, y las transiciones entre los estados se indican mediante líneas orientadas que conectan los círculos. Lo anterior en el entendido de que los estados son las salidas de los flip-flops de los cuales se compone el circuito lógico secuencial. El diagrama de estados proporciona la misma información que la tabla de estados y se obtiene directamente de él.</p>
+<div class="admonition-automatas-de-moore-y-automatas-de-mealy admonition">
+<p class="admonition-title">Autómatas de Moore y autómatas de Mealy</p>
+<p>Los circuitos secuenciales en los que las salidas dependen de las entradas, así como  de los estados presentes, se denominan <strong>Autómatas o Máquinas de Mealy</strong>.</p>
+<p>Para especificar los circuitos secuenciales en los que las salidas sólo dependen de los estados actuales, basta con una única columna. A estos circuitos secuenciales se les denomina <strong>Autómatas de Moore</strong>.</p>
+</div>
+<p>En la <a class="reference internal" href="#diagrama-estados"><span class="std std-numref">Figura 53</span></a> se muestra la representación en un diagrama de estados del comportamiento del circuito lógico de la figura <a class="reference internal" href="analisis_secuenciales.html#logico-secuencial"><span class="std std-numref">Figura 52</span></a>.</p>
+<div class="figure align-default" id="diagrama-estados">
+<a class="reference internal image-reference" href="_images/diagrama_estados.png"><img alt="_images/diagrama_estados.png" src="_images/diagrama_estados.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Figura 53 </span><span class="caption-text">Diagrama de estados del circuito lógico mostrado en la <a class="reference internal" href="analisis_secuenciales.html#logico-secuencial"><span class="std std-numref">Figura 52</span></a> (<span id="id3">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#diagrama-estados" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>El número binario dentro de los círculos de un diagrama de estados indica el valor binario de las salidas de los flip-flops. En los autómatas o máquinas de estados tipo Mealy, las líneas o conectores que unen a dos estados se etiquetan con dos números binarios separados por una barra <strong>/</strong>, de manera que el valor se la entrada durante el estado actual se escribe antes de la barra y el siguiente valor es la salida durante el estado actual cuando se aplica tal entrada. Por ejemplo, el conector que une al estado <strong><span class="math notranslate nohighlight">\(00\)</span></strong> con el estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong> se etiqueta como <strong><span class="math notranslate nohighlight">\(1/0\)</span></strong>, esto significa que cuando el ciruito secuencial bajo análisis sen encuentra en el estado actual <strong><span class="math notranslate nohighlight">\(00\)</span></strong> y la entrada es <strong><span class="math notranslate nohighlight">\(1\)</span></strong>, la salida es <strong><span class="math notranslate nohighlight">\(0\)</span></strong>. Despues del siguiente flanco positivo de reloj, el circuito cambia al siguiente estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong>. Cuando se usa un conector que conecta a un círculo en un diagrama de estados consigomismo indica que no hay cambio en los estao.s</p>
+<p>No hay ninguna diferencia entre la información que proporciona una tabla de estados y la que proporciona un diagrama de estado La interpretación del diagrama de estados mostrado en la <a class="reference internal" href="#diagrama-estados"><span class="std std-numref">Figura 53</span></a> es la siguiente: El funcionamiento del circuito empieza cuando se toma en consideración al estado <strong><span class="math notranslate nohighlight">\(00\)</span></strong> como el punto de partida o estado inicial. Siempre que la entrada permanece en un valor de <strong><span class="math notranslate nohighlight">\(1\)</span></strong> lógico, la salida permanece en <strong><span class="math notranslate nohighlight">\(0\)</span></strong>. Si se encuentra el circuito en el estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong>, una entrada igual a <strong><span class="math notranslate nohighlight">\(0\)</span></strong> con una salida igul   a*<span class="math notranslate nohighlight">\(*1\)</span>*<span class="math notranslate nohighlight">\(, regresa al circuito a su estado inicial **\)</span>00$**.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -508,20 +409,20 @@ el signo y la magnitud corregida del resultado, se obtiene <span class="math not
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Codigo_multiplicador.html"
+       href="analisis_secuenciales.html"
        title="página anterior">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">anterior</p>
-        <p class="prev-next-title">Código VHDL para un multiplicador binario de cuatro bits.</p>
+        <p class="prev-next-title">Análisis de circuitos secuenciales</p>
       </div>
     </a>
     <a class="right-next"
-       href="circuitos_logicos_secuenciales.html"
+       href="desc_estados.html"
        title="siguiente página">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Circuitos lógicos secuenciales</p>
+        <p class="prev-next-title">Descripcion en VHLD usando estados</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -534,6 +435,21 @@ el signo y la magnitud corregida del resultado, se obtiene <span class="math not
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-principales-de-diseno">Pasos principales de diseño.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-estados">Diagramas de estados.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
