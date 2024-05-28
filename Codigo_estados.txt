@@ -1,0 +1,97 @@
+library ieee;
+use ieee. std_logic_1164.all;
+use ieee. std_logic_arith.all;
+use ieee. std_logic_unsigned.all;
+
+
+entity secuencial is
+PORT( X,CLK: in std_logic;
+    Y: out std_logic);
+end secuencial;
+
+architecture arq of secuencial is
+
+TYPE STATE_TYPE is (e0,e1,e2,e3);
+signal estado: STATE_TYPE; 
+signal A,noA,B,noB: STD_LOGIC;
+
+begin
+
+process(CLK)
+  begin 
+     if CLK'event and CLK='1' then 
+       case estado is   
+          when e0=> 
+             if X='1' then
+                y<='0';
+                estado<=e1;
+                A<='0';
+                noA<= Not A;
+                 B<='1';
+                noB<= Not B;               
+            else
+                 estado<=e0;
+                 y<='0';
+                A<='0';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                    
+            end if; 
+          when e1=> 
+             if X='1' then
+                y<='0';
+                estado<=e3;
+                A<='1';
+                noA<= Not A;
+                 B<='1';
+                noB<= Not B;                   
+             else
+                estado<=e0;
+                y<='1';
+                A<='0';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                   
+             end if;           
+         when e3=> 
+              if X='1' then
+                y<='0';
+                estado<=e2;
+                 A<='1';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                  
+            else
+               estado<=e0;
+               y<='1';
+                A<='0';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                  
+            end if;         
+         when e2=> 
+            if X='1' then
+               y<='0';
+               estado<=e2;
+                 A<='1';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                 
+            else
+               estado<=e0;
+               y<='1';
+                A<='0';
+                noA<= Not A;
+                 B<='0';
+                noB<= Not B;                  
+            end if;    
+         when others=> 
+              y<='U';
+                A<='U';
+                noA<= 'U';
+                 B<='U';
+                noB<= 'U';   
+       end case;   
+     end if;
+   end process;  
+end arq;

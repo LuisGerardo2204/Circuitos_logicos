@@ -104,7 +104,7 @@ end arq;
 
 
 ````
-La {numref}`tabla_secuencial_1` constituye la tabla de estados del ciurcuito lógico secuencial mostrado en la la figura {numref}`logico_secuencial`. La única entrada a este circuito secuencial es $X$, para cada posible combinación de la entrada los estados aparecen repetidos, además, considerese que el estado futuro en la tabla refleja el valor lógico de las salidas $A$ y $B$ $\textcolor{blue}{después~de~un~periodo~de~reloj}$. Cuando se obtiene una tabla de estados, se deben enumerar todas las posibles combinaciones binarias de estados actuales y entradas. En el caso de la {numref}`tabla_secuencial_1` se tienen ocho combinaciones de entrada por que se tienen dos bits de estado $A$ y $B$, además de la entrada $X$.
+La {numref}`tabla_secuencial_1` constituye la tabla de estados del ciurcuito lógico secuencial mostrado en la {numref}`logico_secuencial`. La única entrada a este circuito secuencial es $X$, para cada posible combinación de la entrada los estados aparecen repetidos, además, considerese que el estado futuro en la tabla refleja el valor lógico de las salidas $A$ y $B$ $\textcolor{blue}{después~de~un~periodo~de~reloj}$. Cuando se obtiene una tabla de estados, se deben enumerar todas las posibles combinaciones binarias de estados actuales y entradas. En el caso de la {numref}`tabla_secuencial_1` se tienen ocho combinaciones de entrada por que se tienen dos bits de estado $A$ y $B$, además de la entrada $X$.
 
 ```{list-table} Tabla de verdad del latch RS
 :header-rows: 1

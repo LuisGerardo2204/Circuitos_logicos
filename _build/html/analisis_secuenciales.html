@@ -7,8 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Análisis de circuitos secuenciales &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
   
   
@@ -70,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'analisis_secuenciales';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Búsqueda" href="search.html" />
-    <link rel="next" title="Bibliografía" href="Bibliograf%C3%ADa.html" />
+    <link rel="next" title="Diseño de circuitos secuenciales." href="diseno_secuenciales.html" />
     <link rel="prev" title="Flip-flops con símbolos gráficos estándar" href="flip_flops.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="es"/>
@@ -167,8 +166,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="compuertas_VHDL.html">Compuertas Lógicas en VHDL</a></li>
-
-
 <li class="toctree-l1"><a class="reference internal" href="estructuras_control_VHDL.html">Estructuras de control de flujo o de desición en VHDL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
@@ -179,6 +176,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
 <li class="toctree-l1"><a class="reference internal" href="flip_flops.html">Flip-flops con símbolos gráficos estándar</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Análisis de circuitos secuenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diseno_secuenciales.html">Diseño de circuitos secuenciales.</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
 </ul>
 
@@ -328,7 +327,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="analisis-de-circuitos-secuenciales">
+  <div class="tex2jax_ignore mathjax_ignore section" id="analisis-de-circuitos-secuenciales">
 <h1>Análisis de circuitos secuenciales<a class="headerlink" href="#analisis-de-circuitos-secuenciales" title="Permalink to this heading">#</a></h1>
 <p>Las ecuaciones booleanas de entrada a los flip-flops son una expresión muy conveniente para especificar el diagrama lógico de un circuito secuencial. Es usual el determinar las entradas usando el nombre del tipo de flip flop que se utiliza en el circuito secuencial, estas expressiones también especifican de forma total el circuito combinacional que maneja a los elementos de memoria o flip-flops. En las ecuaciones booleanas de entrada no se especifica la entrada de reloj o <span class="math notranslate nohighlight">\(CLK\)</span>, pero se entiende que es necesaria al ser parte de un circuito secuencial (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>). Por ejemplo, para el circuito secuencial que se muestra en la figura <a class="reference internal" href="#logico-secuencial"><span class="std std-numref">Figura 52</span></a> las ecuaciones de entrada son las siguientes:</p>
 <div class="math notranslate nohighlight">
@@ -340,12 +339,10 @@ Y=(A+B)\overline{X}
 \end{eqnarray}
 \end{split}\]</div>
 <p>Las entradas <span class="math notranslate nohighlight">\(D_A\)</span> y <span class="math notranslate nohighlight">\(D_B\)</span> son las ecuaciones de entrada a dos flip-flops diferentes. Por otra parte, las salidas de los flip-flops son denotadas por las literales <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>. Estas dos salidas constituyen el estado del circuito secuencial.</p>
-<figure class="align-default" id="logico-secuencial">
+<div class="figure align-default" id="logico-secuencial">
 <a class="reference internal image-reference" href="_images/secuencial_1.png"><img alt="_images/secuencial_1.png" src="_images/secuencial_1.png" style="height: 400px;" /></a>
-<figcaption>
-<p><span class="caption-number">Figura 52 </span><span class="caption-text">Circuito lógico secuencial (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#logico-secuencial" title="Enlace permanente a esta imagen">#</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Figura 52 </span><span class="caption-text">Circuito lógico secuencial (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#logico-secuencial" title="Enlace permanente a esta imagen">#</a></p>
+</div>
 <p>El código VHDL para la descripción de un flip-flop RS, usando estructuras de desición y un proceso basado en eventos para la inclusión de una entrada de reloj es la siguiente:</p>
 <div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">----------------------------------------------------</span>
 <span class="c1">-- Descripción de un circuito secuencial, basado en </span>
@@ -412,9 +409,19 @@ Y=(A+B)\overline{X}
 <span class="k">end</span><span class="w"> </span><span class="nc">arq</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>La <a class="reference internal" href="#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a> constituye la tabla de estados del ciurcuito lógico secuencial mostrado en la la figura <a class="reference internal" href="#logico-secuencial"><span class="std std-numref">Figura 52</span></a>. La única entrada a este circuito secuencial es <span class="math notranslate nohighlight">\(X\)</span>, para cada posible combinación de la entrada los estados aparecen repetidos, además, considerese que el estado futuro en la tabla refleja el valor lógico de las salidas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> <span class="math notranslate nohighlight">\(\textcolor{blue}{después~de~un~periodo~de~reloj}\)</span>. Cuando se obtiene una tabla de estados, se deben enumerar todas las posibles combinaciones binarias de estados actuales y entradas. En el caso de la <a class="reference internal" href="#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a> se tienen ocho combinaciones de entrada por que se tienen dos bits de estado <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>, además de la entrada <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>La <a class="reference internal" href="#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a> constituye la tabla de estados del ciurcuito lógico secuencial mostrado en la <a class="reference internal" href="#logico-secuencial"><span class="std std-numref">Figura 52</span></a>. La única entrada a este circuito secuencial es <span class="math notranslate nohighlight">\(X\)</span>, para cada posible combinación de la entrada los estados aparecen repetidos, además, considerese que el estado futuro en la tabla refleja el valor lógico de las salidas <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span> <span class="math notranslate nohighlight">\(\textcolor{blue}{después~de~un~periodo~de~reloj}\)</span>. Cuando se obtiene una tabla de estados, se deben enumerar todas las posibles combinaciones binarias de estados actuales y entradas. En el caso de la <a class="reference internal" href="#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a> se tienen ocho combinaciones de entrada por que se tienen dos bits de estado <span class="math notranslate nohighlight">\(A\)</span> y <span class="math notranslate nohighlight">\(B\)</span>, además de la entrada <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <table class="table table-left" id="tabla-secuencial-1">
 <caption><span class="caption-number">Tabla 19 </span><span class="caption-text">Tabla de verdad del latch RS</span><a class="headerlink" href="#tabla-secuencial-1" title="Enlace permanente a esta tabla">#</a></caption>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>Estado Actual</p></th>
@@ -511,7 +518,7 @@ Y=(A+B)\overline{X}
 </tbody>
 </table>
 <p>La tabla de estado de un circuito secuencial con <span class="math notranslate nohighlight">\(m\)</span> flip-flops y <span class="math notranslate nohighlight">\(n\)</span> entradas requiere <span class="math notranslate nohighlight">\(2^{m+n}\)</span> filas para ser descrita. Para construir la tabla de estado, se enlistan con los números binarios desde <span class="math notranslate nohighlight">\(0\)</span> hasta <span class="math notranslate nohighlight">\(2^{m+n}-1\)</span> combinando columnas de entrada y de estado actual.</p>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -554,11 +561,11 @@ Y=(A+B)\overline{X}
       </div>
     </a>
     <a class="right-next"
-       href="Bibliograf%C3%ADa.html"
+       href="diseno_secuenciales.html"
        title="siguiente página">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">siguiente</p>
-        <p class="prev-next-title">Bibliografía</p>
+        <p class="prev-next-title">Diseño de circuitos secuenciales.</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

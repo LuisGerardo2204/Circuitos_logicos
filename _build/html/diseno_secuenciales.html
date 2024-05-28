@@ -1,0 +1,618 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="es" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diseño de circuitos secuenciales. &#8212; Apuntes de circuitos lógicos UPIIH IPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/.ipynb_checkpoints/myfile-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diseno_secuenciales';</script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="next" title="Bibliografía" href="Bibliograf%C3%ADa.html" />
+    <link rel="prev" title="Análisis de circuitos secuenciales" href="analisis_secuenciales.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="es"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_UPIIH.jpeg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/logo_UPIIH.jpeg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Material didáctico de circuitos lógicos
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_VHDL.html">Formas de especificar el comportamiento de un circuito lógico</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logicos_VHDL.html">Tipos de datos en VHDL</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compuertas_VHDL.html">Compuertas Lógicas en VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="estructuras_control_VHDL.html">Estructuras de control de flujo o de desición en VHDL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_aritmeticos.html">Circuitos lógicos aritméticos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulaciones_testbench.html">Uso del testbench o banco de pruebas en simulaciones</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resta_binaria.html">Resta binaria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="multiplicacion_binaria.html">Multiplicación binaria</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Codigo_multiplicador.html">Código VHDL para un multiplicador binario de cuatro bits.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="resta_con_signo.html">Resta binaria con signo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="circuitos_logicos_secuenciales.html">Circuitos lógicos secuenciales</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flip_flops.html">Flip-flops con símbolos gráficos estándar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_secuenciales.html">Análisis de circuitos secuenciales</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diseño de circuitos secuenciales.</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Bibliograf%C3%ADa.html">Bibliografía</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descarga esta pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/diseno_secuenciales.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Descargar archivo fuente"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir en PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo de pantalla completa"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="claro/oscuro" aria-label="claro/oscuro" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Búsqueda" aria-label="Búsqueda" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diseño de circuitos secuenciales.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contenido </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diseño de circuitos secuenciales.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-principales-de-diseno">Pasos principales de diseño.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-estados">Diagramas de estados.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-en-vhld-usando-estados">Descripcion en VHLD usando estados</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="diseno-de-circuitos-secuenciales">
+<h1>Diseño de circuitos secuenciales.<a class="headerlink" href="#diseno-de-circuitos-secuenciales" title="Permalink to this heading">#</a></h1>
+<p>El diseño de los circuotos lógicos secuenciales que son del tipo síncrono. es decir que cuenten con una entrada de reloj, se inicia regualrmente con un conjunto de especificiaciones que son del tipo verbal, abstracta o incluso de un conjunto de expresiones booleanas que a menudo surgen de un diagrama lógico incluso. A diferencia de la especificiación de un circuito combiancional que se especifica completamente por medio de una tabla de verdad, para un circuito secuencial se hace necesaria una tabla de estados como la especificada en la <a class="reference internal" href="analisis_secuenciales.html#tabla-secuencial-1"><span class="std std-numref">Tabla 19</span></a>.</p>
+<p>Un circuito secuencial se construye a partir de flip-flops y de una parte combinacional a partir de compuertas lógicas. Una parte importante del diseño consiste en elegir los flip-flips adecuados y encontrar las expresiones booleanas que en conjunto con la parte secuencial cumpla las especificaciones dadas. El número mínimo de flip-flops es determinado completamente por los estados del circuito; si se tienen <span class="math notranslate nohighlight">\(n\)</span> flip-flops pueden representar <span class="math notranslate nohighlight">\(2^n\)</span> estados binarios. Finalmente, se puede expresar que el porceso de diseño de un circuito secuencial se convierte en un problema de diseño de circuitos combinacionales, en el que pueden aplicarse las técnicas de diseño como el mapa de Karnauhg (<span id="id1">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</p>
+<div class="section" id="pasos-principales-de-diseno">
+<h2>Pasos principales de diseño.<a class="headerlink" href="#pasos-principales-de-diseno" title="Permalink to this heading">#</a></h2>
+<p>El diseño de circuitos secuenciales es muy similar al de los circuitos combinacionales, sim embargo se pueden aplicar algunas reglas similares para el diseño de los circuitod lógicos secuenciales, ya sean síncronos o asíncronos. Los siguientes pasos son generales mas no únicos para el diseño de circuitos combinacionales, como se desctibe en (<span id="id2">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>):</p>
+<ol class="arabic simple">
+<li><p><strong>Especificacion de diseño:</strong> se describe el desempeño o comportamiento deseado para el circuito o sistema digital.</p></li>
+<li><p><strong>Formulación del desempeño deseado:</strong> se obtiene o plantea un diagrama de estados o una tabla de estados a partir de las especificaciones de diseño.</p></li>
+<li><p><strong>Se asignan los estados:</strong> si es viable la costrucción de un diagrama de estados se asignan los códigos binarios a los estados de la tabla, entendidos como la combinación de las salidas de los flip-flops.</p></li>
+<li><p><strong>De determinan las expresiones booleanas de entrada:</strong> se seleccionan los flip-flops a partir de la tabla de estados, la tabla de estados puede ser una herramienta importante de selección del tipo de flip-flop en función de las expresiones de entrada que se encuentran íntimamente relacionadas o codificadas en los estados futuros.</p></li>
+<li><p><strong>Determinación de la ecuación de salida:</strong> se establecen las euaciones de salida a partir de las salidas que se establecen en las especificaciones de salida o salidas en la tabla de estados.</p></li>
+<li><p><strong>Optimización:</strong> se minimizan las expresiones de entrada y salida de los flip-flops usando herramientas como el mapa de Karnaugh.</p></li>
+<li><p><strong>Especificación del diagrama lógico</strong> se especifica el diagrama lógico del circuito secuencial usando los símbolos estándar para los flip-flops y las compuertas para las expresiones booleanas.</p></li>
+<li><p><strong>Simulación:</strong> por medio de la simulación se verifica el comportamiento del circuito lógico. La simualción se realiza utilizando las herramientas pertinentes, un simulador gráfico o un software de desarrollo como vivado.</p></li>
+</ol>
+<p>El principio para formular las tablas y diagramas de estados es la comprensión intuitiva del concepto de estado. Un estado es un recordatorio de las combinaciones de entrada que se han aplicado al circuito en cualquier flanco positivo del reloj.</p>
+</div>
+<div class="section" id="diagramas-de-estados">
+<h2>Diagramas de estados.<a class="headerlink" href="#diagramas-de-estados" title="Permalink to this heading">#</a></h2>
+<p>La información disponible en una tabla de estados se puede representar gráficamente en forma de diagrama de estados. En este tipo de diagrama, un estado se representa por un círculo, y las transiciones entre los estados se indican mediante líneas orientadas que conectan los círculos. Lo anterior en el entendido de que los estados son las salidas de los flip-flops de los cuales se compone el circuito lógico secuencial. El diagrama de estados proporciona la misma información que la tabla de estados y se obtiene directamente de él.</p>
+<div class="admonition-automatas-de-moore-y-automatas-de-mealy admonition">
+<p class="admonition-title">Autómatas de Moore y autómatas de Mealy</p>
+<p>Los circuitos secuenciales en los que las salidas dependen de las entradas, así como  de los estados presentes, se denominan <strong>Autómatas o Máquinas de Mealy</strong>.</p>
+<p>Para especificar los circuitos secuenciales en los que las salidas sólo dependen de los estados actuales, basta con una única columna. A estos circuitos secuenciales se les denomina <strong>Autómatas de Moore</strong>.</p>
+</div>
+<p>En la <a class="reference internal" href="#diagrama-estados"><span class="std std-numref">Figura 53</span></a> se muestra la representación en un diagrama de estados del comportamiento del circuito lógico de la figura <a class="reference internal" href="analisis_secuenciales.html#logico-secuencial"><span class="std std-numref">Figura 52</span></a></p>
+<div class="figure align-default" id="diagrama-estados">
+<a class="reference internal image-reference" href="_images/diagrama_estados.png"><img alt="_images/diagrama_estados.png" src="_images/diagrama_estados.png" style="height: 300px;" /></a>
+<p class="caption"><span class="caption-number">Figura 53 </span><span class="caption-text">Diagrama de estados del circuito lógico mostrado en la <a class="reference internal" href="analisis_secuenciales.html#logico-secuencial"><span class="std std-numref">Figura 52</span></a> (<span id="id3">Mano and Kime [<a class="reference internal" href="Bibliograf%C3%ADa.html#id3" title="M. Morris. Mano and Charles. Kime. Fundamentos de diseño lógico y computadoras. Pearson education, Madrid, España., tercera edition, 2017. ISBN 9788483226889.">MK17</a>]</span>).</span><a class="headerlink" href="#diagrama-estados" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+<p>El número binario dentro de los círculos de un diagrama de estados indica el valor binario de las salidas de los flip-flops. En los autómatas o máquinas de estados tipo Mealy, las líneas o conectores que unen a dos estados se etiquetan con dos números binarios separados por una barra <strong>/</strong>, de manera que el valor se la entrada durante el estado actual se escribe antes de la barra y el siguiente valor es la salida durante el estado actual cuando se aplica tal entrada. Por ejemplo, el conector que une al estado <strong><span class="math notranslate nohighlight">\(00\)</span></strong> con el estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong> se etiqueta como <strong><span class="math notranslate nohighlight">\(1/0\)</span></strong>, esto significa que cuando el ciruito secuencial bajo análisis sen encuentra en el estado actual <strong><span class="math notranslate nohighlight">\(00\)</span></strong> y la entrada es <strong><span class="math notranslate nohighlight">\(1\)</span></strong>, la salida es <strong><span class="math notranslate nohighlight">\(0\)</span></strong>. Despues del siguiente flanco positivo de reloj, el circuito cambia al siguiente estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong>. Cuando se usa un conector que conecta a un círculo en un diagrama de estados consigomismo indica que no hay cambio en los estados.</p>
+<p>No hay ninguna diferencia entre la información que proporciona una tabla de estados y la que proporciona un diagrama de estado La interpretación del diagrama de estados mostrado en la <a class="reference internal" href="#diagrama-estados"><span class="std std-numref">Figura 53</span></a> es la siguiente: El funcionamiento del circuito empieza cuando se toma en consideración al estado <strong><span class="math notranslate nohighlight">\(00\)</span></strong> como el punto de partida o estado inicial. Siempre que la entrada permanece en un valor de <strong><span class="math notranslate nohighlight">\(1\)</span></strong> lógico, la salida permanece en <strong><span class="math notranslate nohighlight">\(0\)</span></strong>. Si se encuentra el circuito en el estado <strong><span class="math notranslate nohighlight">\(01\)</span></strong>, una entrada igual a <strong><span class="math notranslate nohighlight">\(0\)</span></strong> con una salida igual a <strong><span class="math notranslate nohighlight">\(1\)</span></strong>, regresa al circuito a su estado inicial <strong><span class="math notranslate nohighlight">\(00\)</span></strong>.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="descripcion-en-vhld-usando-estados">
+<h1>Descripcion en VHLD usando estados<a class="headerlink" href="#descripcion-en-vhld-usando-estados" title="Permalink to this heading">#</a></h1>
+<p>La descripción en VHDL del circuito mostrado en la <a class="reference internal" href="analisis_secuenciales.html#logico-secuencial"><span class="std std-numref">Figura 52</span></a> se muestra abajo:</p>
+<div class="highlight-VHDL notranslate"><div class="highlight"><pre><span></span><span class="c1">------------------------------------------------------------</span>
+<span class="c1">--  Descripción de un circuito secuncial usando estados</span>
+<span class="c1">------------------------------------------------------------ </span>
+<span class="k">library</span><span class="w"> </span><span class="nn">ieee</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">ieee.</span><span class="w"> </span><span class="n">std_logic_1164</span><span class="p">.</span><span class="k">all</span><span class="p">;</span>
+
+<span class="k">entity</span><span class="w"> </span><span class="nc">secuencial</span><span class="w"> </span><span class="k">is</span>
+<span class="w">  </span><span class="k">PORT</span><span class="p">(</span><span class="w"> </span><span class="n">X</span><span class="p">,</span><span class="n">CLK</span><span class="o">:</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Y</span><span class="o">:</span><span class="w"> </span><span class="k">out</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">);</span>
+<span class="w">  </span><span class="k">end</span><span class="w"> </span><span class="nc">secuencial</span><span class="p">;</span>
+
+<span class="k">architecture</span><span class="w"> </span><span class="nc">arq</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nc">secuencial</span><span class="w"> </span><span class="k">is</span>
+
+<span class="k">TYPE</span><span class="w"> </span><span class="n">STATE_TYPE</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="p">(</span><span class="n">e0</span><span class="p">,</span><span class="n">e1</span><span class="p">,</span><span class="n">e2</span><span class="p">,</span><span class="n">e3</span><span class="p">);</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">estado</span><span class="o">:</span><span class="w"> </span><span class="n">STATE_TYPE</span><span class="p">;</span>
+<span class="k">signal</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="n">noA</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">noB</span><span class="o">:</span><span class="w"> </span><span class="kt">std_logic</span><span class="p">;</span>
+
+<span class="k">begin</span>
+
+<span class="k">PROCESS</span><span class="p">(</span><span class="n">CLK</span><span class="p">)</span>
+<span class="w">   </span><span class="k">begin</span>
+<span class="w">       </span><span class="k">if</span><span class="w"> </span><span class="n">CLK</span><span class="na">&#39;event</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="n">CLK</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="n">estado</span><span class="w"> </span><span class="k">is</span>
+<span class="w">                  </span><span class="k">when</span><span class="w"> </span><span class="n">e0</span><span class="o">=&gt;</span>
+<span class="w">                      </span><span class="k">if</span><span class="w"> </span><span class="n">X</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e1</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w">       </span>
+<span class="w">                      </span><span class="k">else</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e0</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">                         </span>
+<span class="w">                      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="w">                  </span><span class="k">when</span><span class="w"> </span><span class="n">e1</span><span class="o">=&gt;</span>
+<span class="w">                      </span><span class="k">if</span><span class="w"> </span><span class="n">X</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e3</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span><span class="w">       </span>
+<span class="w">                      </span><span class="k">else</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e0</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">                         </span>
+<span class="w">                      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w">               </span>
+<span class="w">                  </span><span class="k">when</span><span class="w"> </span><span class="n">e2</span><span class="o">=&gt;</span>
+<span class="w">                      </span><span class="k">if</span><span class="w"> </span><span class="n">X</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e2</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">       </span>
+<span class="w">                      </span><span class="k">else</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e0</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">                         </span>
+<span class="w">                      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w">  </span>
+<span class="w">                  </span><span class="k">when</span><span class="w"> </span><span class="n">e3</span><span class="o">=&gt;</span>
+<span class="w">                      </span><span class="k">if</span><span class="w"> </span><span class="n">X</span><span class="o">=</span><span class="sc">&#39;1&#39;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e2</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">       </span>
+<span class="w">                      </span><span class="k">else</span>
+<span class="w">                         </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">estado</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">e0</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">A</span><span class="w"> </span><span class="o">&lt;=</span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noA</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">B</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;0&#39;</span><span class="p">;</span>
+<span class="w">                         </span><span class="n">noB</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="sc">&#39;1&#39;</span><span class="p">;</span><span class="w">                         </span>
+<span class="w">                      </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span><span class="w">  </span>
+<span class="w">                </span><span class="k">when</span><span class="w"> </span><span class="k">others</span><span class="w"> </span><span class="o">=&gt;</span>
+<span class="w">                        </span><span class="n">Y</span><span class="o">&lt;=</span><span class="sc">&#39;U&#39;</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">A</span><span class="o">&lt;=</span><span class="sc">&#39;U&#39;</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">noA</span><span class="o">&lt;=</span><span class="sc">&#39;U&#39;</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">B</span><span class="o">&lt;=</span><span class="sc">&#39;U&#39;</span><span class="p">;</span>
+<span class="w">                        </span><span class="n">noB</span><span class="o">&lt;=</span><span class="sc">&#39;U&#39;</span><span class="p">;</span>
+<span class="w">           </span><span class="k">end</span><span class="w"> </span><span class="k">case</span><span class="p">;</span>
+<span class="w">        </span><span class="k">end</span><span class="w"> </span><span class="k">if</span><span class="p">;</span>
+<span class="k">end</span><span class="w"> </span><span class="k">PROCESS</span><span class="p">;</span><span class="w">        </span>
+<span class="k">end</span><span class="w"> </span><span class="nc">arq</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>La salida de la simulación del código anterior se muestra en la <a class="reference internal" href="#salida-estados"><span class="std std-numref">Figura 54</span></a>.</p>
+<div class="figure align-default" id="salida-estados">
+<a class="reference internal image-reference" href="_images/salida_secuencial_estados.png"><img alt="_images/salida_secuencial_estados.png" src="_images/salida_secuencial_estados.png" style="height: 280px;" /></a>
+<p class="caption"><span class="caption-number">Figura 54 </span><span class="caption-text">Salida de la simulación del circuito con el diagrama de estados mostrado en la <a class="reference internal" href="#diagrama-estados"><span class="std std-numref">Figura 53</span></a>.</span><a class="headerlink" href="#salida-estados" title="Enlace permanente a esta imagen">#</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "Octave"
+        },
+        kernelOptions: {
+            name: "Octave",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'Octave'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="analisis_secuenciales.html"
+       title="página anterior">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Análisis de circuitos secuenciales</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Bibliograf%C3%ADa.html"
+       title="siguiente página">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">siguiente</p>
+        <p class="prev-next-title">Bibliografía</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contenido
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diseño de circuitos secuenciales.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pasos-principales-de-diseno">Pasos principales de diseño.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagramas-de-estados">Diagramas de estados.</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#descripcion-en-vhld-usando-estados">Descripcion en VHLD usando estados</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Por Dr. Luis Gerardo Trujillo Franco
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
